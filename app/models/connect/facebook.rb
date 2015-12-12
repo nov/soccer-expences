@@ -4,7 +4,9 @@ class Connect::Facebook < ActiveRecord::Base
   belongs_to :account
 
   def profile
-    @profile ||= FbGraph2::User.me(access_token).fetch
+    @profile ||= FbGraph2::User.me(access_token).fetch(
+      fields: [:name, :email]
+    )
   end
 
   class << self
@@ -21,8 +23,9 @@ class Connect::Facebook < ActiveRecord::Base
       connect = find_or_initialize_by(identifier: _auth_.user.identifier)
       connect.access_token = _auth_.access_token.access_token
       connect.save!
-      connect.account || Account.new(
+      connect.account || Account.create!(
         facebook: connect,
+        email: connect.profile.email,
         display_name: connect.profile.name
       )
     end

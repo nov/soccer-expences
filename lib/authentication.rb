@@ -1,7 +1,9 @@
 module Authentication
   extend ActiveSupport::Concern
 
-  class AuthenticationRequired < StandardError; end
+  class AuthenticationRequired  < StandardError; end
+  class ApprovedAccessRequired  < StandardError; end
+  class AdminAccessRequired     < StandardError; end
   class AnonymousAccessRequired < StandardError; end
 
   included do

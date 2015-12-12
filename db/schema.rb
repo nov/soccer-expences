@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20151212152357) do
     t.boolean  "admin",             default: false
     t.boolean  "approved",          default: false
     t.string   "display_name",                      null: false
+    t.string   "email",                             null: false
     t.datetime "last_logged_in_at"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false

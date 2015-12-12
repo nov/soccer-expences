@@ -7,7 +7,7 @@
       appId  : '<%= Connect::Facebook.config[:client_id] %>',
       cookie : true,
       xfbml  : true,
-      version: 'v2.5'
+      version: '<%= FbGraph2.api_version %>'
     });
   };
 
