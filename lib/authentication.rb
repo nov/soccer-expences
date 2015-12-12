@@ -8,6 +8,8 @@ module Authentication
     include Authentication::Helper
     before_filter :optional_authentication
     rescue_from AuthenticationRequired,  with: :authentication_required!
+    rescue_from ApprovedAccessRequired,  with: :approved_access_required!
+    rescue_from AdminAccessRequired,     with: :admin_access_required!
     rescue_from AnonymousAccessRequired, with: :anonymous_access_required!
   end
 
@@ -24,6 +26,18 @@ module Authentication
   def authentication_required!(e)
     redirect_to root_url, flash: {
       error: e.message || 'Authentication Required'
+    }
+  end
+
+  def approved_access_required!(e)
+    redirect_to dashboard_url, flash: {
+      error: e.message || 'Access Approval Required'
+    }
+  end
+
+  def admin_access_required!(e)
+    redirect_to dashboard_url, flash: {
+      error: e.message || 'Admin Access Required'
     }
   end
 
@@ -44,6 +58,16 @@ module Authentication
       session[:after_logged_in_endpoint] = request.url if request.get?
       raise AuthenticationRequired.new
     end
+  end
+
+  def require_approved_access
+    require_authentication
+    raise ApprovedAccessRequired.new unless current_user.approved?
+  end
+
+  def require_admin_access
+    require_authentication
+    raise AdminAccessRequired.new unless current_user.admin?
   end
 
   def require_anonymous_access
