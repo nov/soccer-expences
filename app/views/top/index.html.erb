@@ -1,0 +1,21 @@
+<fb:login-button scope="email" onlogin="$('form#fb_login').submit()"></fb:login-button>
+<%= form_tag connect_facebook_path, id: 'fb_login' %>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId  : '<%= Connect::Facebook.config[:client_id] %>',
+      cookie : true,
+      xfbml  : true,
+      version: 'v2.5'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>

@@ -1,0 +1,2 @@
+module Connect::FacebooksHelper
+end
