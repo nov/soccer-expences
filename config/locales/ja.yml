@@ -4,4 +4,4 @@ ja:
     sub_title: 元石川SC 4年生チーム 経費管理サイト
   navi:
     login_with_facebook: Facebook ID でログイン
-    logout: ログアウト
+    logout: ログアウト (%{display_name})

@@ -25,4 +25,4 @@ en:
     sub_title: sub-title in english
   navi:
     login_with_facebook: Login with Facebook
-    logout: Logout
+    logout: Logout (%{display_name})

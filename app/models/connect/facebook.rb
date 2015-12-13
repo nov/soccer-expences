@@ -3,13 +3,6 @@ require 'url_safe_base64'
 class Connect::Facebook < ActiveRecord::Base
   belongs_to :account
 
-  def picture(type = :square)
-    [
-      File.join(FbGraph2.root_url, identifier, 'picture'),
-      {type: type}.to_query
-    ].join('?')
-  end
-
   def profile
     @profile ||= FbGraph2::User.me(access_token).fetch(
       fields: [:name, :email]

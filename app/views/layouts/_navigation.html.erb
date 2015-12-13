@@ -34,15 +34,17 @@
         </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
-        <% if picture = current_account.try(:facebook).try(:picture, :square) %>
-          <li><%= image_tag picture, class: 'circle' %></li>
-        <% end %>
-        <li>
-          <% if authenticated? %>
-            <%= link_to 'navi.logout'.t, session_path, method: :delete %>
-          <% else %>
+        <% if authenticated? %>
+          <li>
+            <%= link_to session_path, class: 'include-icon', method: :delete do %>
+              <%= 'navi.logout'.t(display_name: current_account.display_name) %>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
             <%= render 'layouts/fb_login_button' %>
-          <% end %>
+          </li>
+        <% end %>
         </li>
       </ul>
     </div>
