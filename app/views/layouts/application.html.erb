@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SoccerExpenses</title>
+  <title><%= 'site.title'.t %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+<%= content_tag :body, class: controller_name do %>
+  <%= render 'layouts/navigation' %>
+  <div class="container">
+    <%= render 'layouts/header' %>
+    <%= yield %>
+  </div>
+  <%= yield :bottom %>
+  <script>
+    $(function () {
+      $.material.init();
+    });
+  </script>
+<% end %>
 </html>

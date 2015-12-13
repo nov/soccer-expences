@@ -20,4 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  site:
+    title: Soccer Expenses
+    sub_title: sub-title in english
+  navi:
+    login_with_facebook: Login with Facebook
+    logout: Logout

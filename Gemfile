@@ -8,6 +8,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
+gem 'bootstrap3-rails'
+gem 'bootstrap-material-design'
+
 gem 'fb_graph2'
 
 group :doc do
