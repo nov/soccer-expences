@@ -27,6 +27,7 @@ ja:
     info: Info
     approval_required: このサイトのコンテンツを閲覧するには、管理者の承認が必要です。
   event:
+    list: イベント一覧
     new: イベント新規登録
     edit: イベント編集
     create:

@@ -29,7 +29,7 @@
       </div>
 
       <nav>
-        <%= link_to 'Cancel', dashboard_path, class: 'btn btn-default' %>
+        <%= link_to 'Cancel', (@event.new_record? ? dashboard_path : event_path(@event)), class: 'btn btn-default' %>
         <%= f.submit 'Submit', class: 'btn btn-primary' %>
       </nav>
     </fieldset>

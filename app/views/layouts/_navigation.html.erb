@@ -1,13 +1,14 @@
 <%
   navi_menus = [
     {
-      link_text: 'Dashboard',
-      active_on: 'dashboards',
+      link_text: 'event.list'.t,
+      active_on: 'dashboards#show',
       path: dashboard_path
     },
     {
-      link_text: 'Fake',
-      path: '#'
+      link_text: 'event.new'.t,
+      active_on: 'events#new',
+      path: new_event_path
     }
   ]
 %>
@@ -26,7 +27,7 @@
       <% if authenticated? %>
         <ul class="nav navbar-nav">
           <% navi_menus.each do |menu| %>
-            <% options = {class: 'active'} if controller_name == menu[:active_on] %>
+            <% options = {class: 'active'} if "#{controller_name}##{action_name}" == menu[:active_on] %>
             <%= content_tag :li, options do %>
               <% link_to menu[:link_text], menu[:path] %>
             <% end %>
