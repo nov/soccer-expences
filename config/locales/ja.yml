@@ -1,4 +1,19 @@
 ja:
+  activerecord:
+    errors:
+      models:
+        event:
+          attributes:
+            title:
+              blank: タイトルを入力してください。
+              too_short: タイトルが短すぎます。
+              too_long: タイトルが長すぎます。
+            location:
+              blank: 場所を入力してください。
+              too_short: 場所が短すぎます。
+              too_long: 場所が長すぎます。
+            date:
+              blank: 日付を入力してください。
   site:
     title: Soccer Expenses
     sub_title: 元石川SC 4年生チーム 経費管理サイト
@@ -14,12 +29,15 @@ ja:
   event:
     new: イベント新規登録
     edit: イベント編集
+    create:
+      success: イベント作成が成功しました。
+    update:
+      success: イベント編集が成功しました。
     title: タイトル
     date: 日付
     location: 場所
     num_of_attendees: 参加者数
     total_cost: 総費用
-    individual_cost: 費用 / 人
     placeholder:
       title: 横浜市大会 予選3回戦
       location: 日産スタジアム

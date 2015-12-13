@@ -10,44 +10,24 @@
               <th><%= 'event.location'.t %></th>
               <th><%= 'event.num_of_attendees'.t %></th>
               <th><%= 'event.total_cost'.t %></th>
-              <th><%= 'event.individual_cost'.t %></th>
+              <th>
+                <%= link_to material_icon.add.md_18, new_event_path %>
+              </th>
             </tr>
           </thead>
           <tbody>
             <% @events.each do |event| %>
-              <tr class="info">
+              <tr>
                 <td><%= event.date %></td>
                 <td><%= event.title %></td>
                 <td><%= event.location %></td>
                 <td>%</td>
                 <td>%</td>
-                <td>%</td>
+                <td>
+                  <%= link_to material_icon.mode_edit.md_18, event_path(event) %>
+                </td>
               </tr>
             <% end %>
-            <tr>
-              <td>2</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>%</td>
-              <td>%</td>
-              <td>%</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>%</td>
-              <td>%</td>
-              <td>%</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>%</td>
-              <td>%</td>
-              <td>%</td>
-            </tr>
           </tbody>
         </table>
         <% if current_account.admin? %>
