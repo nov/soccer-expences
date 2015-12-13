@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :staffs
   resources :event_members
   resources :members
   resources :events, only: [:show, :new, :edit, :update, :create]

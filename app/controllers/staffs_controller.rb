@@ -1,2 +1,0 @@
-class StaffsController < ApplicationController
-end
