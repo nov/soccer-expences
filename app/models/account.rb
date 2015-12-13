@@ -3,7 +3,7 @@ class Account < ActiveRecord::Base
 
   def admin!
     self.admin = true
-    self.save!
+    self.approve!
   end
 
   def approve!
