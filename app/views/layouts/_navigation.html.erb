@@ -34,6 +34,9 @@
         </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
+        <% if picture = current_account.try(:facebook).try(:picture, :square) %>
+          <li><%= image_tag picture, class: 'circle' %></li>
+        <% end %>
         <li>
           <% if authenticated? %>
             <%= link_to 'navi.logout'.t, session_path, method: :delete %>
