@@ -12,7 +12,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'rack-timeout'
 
 gem 'bootstrap3-rails'
+gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-material-design'
+gem 'material_icons'
 
 gem 'fb_graph2'
 

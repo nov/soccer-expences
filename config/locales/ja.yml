@@ -5,3 +5,22 @@ ja:
   navi:
     login_with_facebook: Facebook ID でログイン
     logout: ログアウト (%{display_name})
+  message:
+    warning: Warning
+    danger: Danger
+    success: Success
+    info: Info
+    approval_required: このサイトのコンテンツを閲覧するには、管理者の承認が必要です。
+  event:
+    new: イベント新規登録
+    edit: イベント編集
+    title: タイトル
+    date: 日付
+    location: 場所
+    num_of_attendees: 参加者数
+    total_cost: 総費用
+    individual_cost: 費用 / 人
+    placeholder:
+      title: 横浜市大会 予選3回戦
+      location: 日産スタジアム
+      date: 2015-12-14
