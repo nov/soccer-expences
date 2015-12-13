@@ -17,6 +17,7 @@ ja:
   site:
     title: Soccer Expenses
     sub_title: 元石川SC 4年生チーム 経費管理サイト
+    copyright: 2015 元石川SC
   navi:
     login_with_facebook: Facebook ID でログイン
     logout: ログアウト (%{display_name})
