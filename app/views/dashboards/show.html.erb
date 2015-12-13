@@ -1,4 +1,4 @@
-<% if current_account.approved? %>
+<% if approved_access? %>
   <%= render 'events/list' %>
 <% else %>
   <p><%= 'message.approval_required'.t %></p>

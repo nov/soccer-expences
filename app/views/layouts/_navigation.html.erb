@@ -6,11 +6,6 @@
       path: dashboard_path
     },
     {
-      link_text: 'event.new'.t,
-      active_on: 'events#new',
-      path: new_event_path
-    },
-    {
       link_text: 'member.list'.t,
       active_on: 'members#index',
       path: members_path
@@ -29,7 +24,7 @@
       <%= link_to 'site.title'.t, root_path, class: 'navbar-brand' %>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
-      <% if authenticated? %>
+      <% if approved_access? %>
         <ul class="nav navbar-nav">
           <% navi_menus.each do |menu| %>
             <% options = {class: 'active'} if "#{controller_name}##{action_name}" == menu[:active_on] %>

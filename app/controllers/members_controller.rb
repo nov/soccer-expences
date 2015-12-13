@@ -1,6 +1,5 @@
 class MembersController < ApplicationController
-  before_filter :require_approved_access
-  before_filter :require_admin_access, only: :create
+  before_filter :require_admin_access, except: [:index, :show]
 
   def index
     @members = Member.all

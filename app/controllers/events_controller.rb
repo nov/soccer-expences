@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  before_filter :require_approved_access
   before_filter :require_admin_access, except: [:show]
   before_filter :set_event, except: [:new, :create]
 

@@ -28,7 +28,7 @@
             <% end %>
           </tbody>
         </table>
-        <% if current_account.admin? %>
+        <% if admin_access? %>
           <nav>
             <%= link_to new_event_path, class: 'btn btn-primary btn-fab' do %>
               <%= material_icon.add %>

@@ -23,6 +23,14 @@ module Authentication
     def authenticated?
       !current_account.blank?
     end
+
+    def approved_access?
+      current_account.try(:approved?)
+    end
+
+    def admin_access?
+      current_account.try(:admin?)
+    end
   end
 
   def authentication_required!(e)
@@ -63,13 +71,11 @@ module Authentication
   end
 
   def require_approved_access
-    require_authentication
-    raise ApprovedAccessRequired.new unless current_account.approved?
+    raise ApprovedAccessRequired.new unless approved_access?
   end
 
   def require_admin_access
-    require_authentication
-    raise AdminAccessRequired.new unless current_account.admin?
+    raise AdminAccessRequired.new unless admin_access?
   end
 
   def require_anonymous_access

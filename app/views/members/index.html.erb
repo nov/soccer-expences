@@ -420,5 +420,16 @@
         </div>
       </div>
     </div>
+    <% if admin_access? %>
+      <div class="col-md-12">
+        <div class="bs-component">
+          <nav>
+            <%= link_to new_member_path, class: 'btn btn-primary btn-fab' do %>
+              <%= material_icon.add %>
+            <% end %>
+          </nav>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
