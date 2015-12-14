@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   has_many :event_members
   has_many :members, through: :event_members
 
-  validates :title, :location, :date, presence: true
+  validates :title, :location, :date, :cost_from_members_budget, :cost_from_team_budget, presence: true
   validates :cost_from_members_budget, :cost_from_team_budget, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 0

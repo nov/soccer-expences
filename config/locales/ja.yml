@@ -90,7 +90,7 @@ ja:
       title: 横浜市大会 予選3回戦
       location: 日産スタジアム
       date: 2015-12-14
-      cost: 1000 (金額確定まで省略可)
+      cost: 1000 (金額確定まで0でOK)
   member:
     new: 選手登録
     edit: 選手編集
