@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     @event = Event.new event_params
     if @event.save
       redirect_to @event, flash: {
-        success: 'event.create.success'.t
+        success: 'flash.create.success'.t
       }
     else
       render :new
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
   def update
     if @event.update event_params
       redirect_to @event, flash: {
-        success: 'event.update.success'.t
+        success: 'flash.update.success'.t
       }
     else
       render :edit

@@ -5,11 +5,11 @@
         <table class="table table-striped table-hover ">
           <thead>
             <tr>
-              <th><%= 'event.date'.t %></th>
-              <th><%= 'event.title'.t %></th>
-              <th><%= 'event.location'.t %></th>
-              <th><%= 'event.num_of_attendees'.t %></th>
-              <th><%= 'event.total_cost'.t %></th>
+              <th><%= Event.human_attribute_name(:date) %></th>
+              <th><%= Event.human_attribute_name(:title) %></th>
+              <th><%= Event.human_attribute_name(:location) %></th>
+              <th><%= Event.human_attribute_name(:num_of_attendees) %></th>
+              <th><%= Event.human_attribute_name(:total_cost) %></th>
               <th></th>
             </tr>
           </thead>

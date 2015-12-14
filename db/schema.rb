@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213110030) do
+ActiveRecord::Schema.define(version: 20151213101505) do
 
   create_table "accounts", force: :cascade do |t|
     t.boolean  "admin",             default: false
@@ -47,13 +47,14 @@ ActiveRecord::Schema.define(version: 20151213110030) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "display_name",   null: false
+    t.string   "description"
+    t.integer  "initial_budget", null: false
+    t.float    "spent_budget"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  create_table "staffs", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  add_index "members", ["display_name"], name: "index_members_on_display_name", unique: true
 
 end

@@ -1,0 +1,34 @@
+<div class="well bs-component"%>
+  <%= form_for @member do |f| %>
+    <fieldset>
+      <div class="form-group label-static <%= 'has-warning' if @member.errors[:display_name].present? %>">
+        <%= f.label :display_name, Member.human_attribute_name(:display_name), class: 'control-label' %>
+        <%= f.text_field :display_name, class: 'form-control', placeholder: 'member.placeholder.display_name'.t %>
+        <% if @member.errors[:display_name].present? %>
+          <span class="help-block"><%= @member.errors[:display_name].first %></span>
+        <% end %>
+      </div>
+
+      <div class="form-group label-static <%= 'has-warning' if @member.errors[:description].present? %>">
+        <%= f.label :description, Member.human_attribute_name(:description), class: 'control-label' %>
+        <%= f.text_field :description, class: 'form-control', placeholder: 'member.placeholder.description'.t %>
+        <% if @member.errors[:description].present? %>
+          <span class="help-block"><%= @member.errors[:description].first %></span>
+        <% end %>
+      </div>
+
+      <div class="form-group label-static <%= 'has-warning' if @member.errors[:initial_budget].present? %>">
+        <%= f.label :initial_budget, Member.human_attribute_name(:initial_budget), class: 'control-label' %>
+        <%= f.number_field :initial_budget, class: 'form-control', placeholder: 'member.placeholder.initial_budget'.t, step: 1000 %>
+        <% if @member.errors[:initial_budget].present? %>
+          <span class="help-block"><%= @member.errors[:initial_budget].first %></span>
+        <% end %>
+      </div>
+
+      <nav>
+        <%= link_to 'Cancel', (@member.new_record? ? members_path : member_path(@member)), class: 'btn btn-default' %>
+        <%= f.submit 'Submit', class: 'btn btn-primary' %>
+      </nav>
+    </fieldset>
+  <% end %>
+</div>

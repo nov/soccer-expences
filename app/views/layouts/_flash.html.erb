@@ -3,10 +3,9 @@
     <div class="col-md-12">
       <% [:warning, :danger, :success, :info].each do |message_type| %>
         <% if flash[message_type].present? %>
-          <div class="bs-component">
+          <div class="bs-component fade-out-automatically">
             <div class="alert alert-dismissible alert-<%= message_type %>">
               <button type="button" class="close" data-dismiss="alert">×</button>
-              <h4><%= "message.#{message_type}".t %></h4>
               <p><%= flash[message_type] %></p>
             </div>
           </div>
@@ -15,3 +14,11 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(function () {
+    setTimeout(function () {
+      $('.fade-out-automatically').fadeOut();
+    }, 10000);
+  });
+</script>

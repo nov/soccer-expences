@@ -1,0 +1,44 @@
+<div class="bs-docs-section">
+  <div class="row">
+    <% @members.each_slice(
+      [@members.count / 3 + 1, 20].max
+    ) do |members| %>
+      <div class="col-md-4">
+        <div class="bs-component">
+          <div class="list-group">
+            <% members.each do |member| %>
+              <div class="list-group-item">
+                <div class="row-action-primary">
+                  <% if local_assigns[:editable] %>
+                    <%= link_to material_icon.tag_faces, member_path(member), class: 'icon-link' %>
+                  <% else %>
+                    <%= material_icon.tag_faces %>
+                  <% end %>
+                </div>
+                <div class="row-content">
+                  <div class="least-content"><%= number_to_currency member.remaining_budget, unit: '¥', precision: 0 %></div>
+                  <h4 class="list-group-item-heading">
+                    <%= member.display_name %>
+                  </h4>
+                  <p class="list-group-item-text"><%= member.description %></p>
+                </div>
+              </div>
+              <div class="list-group-separator"></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if admin_access? %>
+      <div class="col-md-12">
+        <div class="bs-component">
+          <nav>
+            <%= link_to new_member_path, class: 'btn btn-primary btn-fab' do %>
+              <%= material_icon.add %>
+            <% end %>
+          </nav>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -2,12 +2,12 @@ module NavigationHelper
   def navi_menus
     [
       {
-        link_text: 'navi.event'.t,
+        link_text: Event.model_name.human,
         active_on: [:dashboards, :events],
         path: dashboard_path
       },
       {
-        link_text: 'navi.member'.t,
+        link_text: Member.model_name.human,
         active_on: [:members],
         path: members_path
       }

@@ -1,44 +1,52 @@
 ja:
   activerecord:
+    models:
+      event: イベント
+      member: メンバー
+    attributes:
+      event:
+        title: タイトル
+        date: 日付
+        location: 場所
+        num_of_attendees: 参加者数
+        total_cost: 総費用
+      member:
+        display_name: 名前
+        description: 備考
+        initial_budget: 入金額
     errors:
-      models:
-        event:
+      messages:
+        blank: "%{attribute}を入力してください。"
+        member:
           attributes:
-            title:
-              blank: タイトルを入力してください。
-            location:
-              blank: 場所を入力してください。
-            date:
-              blank: 日付を入力してください。
+            initial_budget:
+              greater_than_or_equal_to: "%{count}円以上で入力してください。"
+  flash:
+    create:
+      success: 登録が成功しました。
+    update:
+      success: 編集が成功しました。
   site:
     title: Soccer Expenses
     sub_title: 元石川SC 4年生チーム 経費管理サイト
     copyright: 2015 元石川SC
   navi:
-    event: イベント
-    member: メンバー
     login_with_facebook: Facebook ID でログイン
     logout: ログアウト (%{display_name})
   message:
-    warning: Warning
-    danger: Danger
-    success: Success
-    info: Info
     approval_required: このサイトのコンテンツを閲覧するには、管理者の承認が必要です。
   event:
     new: イベント登録
     edit: イベント編集
-    create:
-      success: イベント作成が成功しました。
-    update:
-      success: イベント編集が成功しました。
-    title: タイトル
-    date: 日付
-    location: 場所
-    num_of_attendees: 参加者数
-    total_cost: 総費用
     placeholder:
       title: 横浜市大会 予選3回戦
       location: 日産スタジアム
       date: 2015-12-14
   member:
+    new: メンバー登録
+    edit: メンバー編集
+    placeholder:
+      display_name: 元石川 三郎
+      description: あだ名 etc. (省略可)
+      initial_budget: 5000
+
