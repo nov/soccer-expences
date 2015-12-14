@@ -19,6 +19,8 @@ ja:
     sub_title: 元石川SC 4年生チーム 経費管理サイト
     copyright: 2015 元石川SC
   navi:
+    event: イベント
+    member: メンバー
     login_with_facebook: Facebook ID でログイン
     logout: ログアウト (%{display_name})
   message:
@@ -28,7 +30,6 @@ ja:
     info: Info
     approval_required: このサイトのコンテンツを閲覧するには、管理者の承認が必要です。
   event:
-    list: イベント一覧
     new: イベント登録
     edit: イベント編集
     create:
@@ -45,5 +46,3 @@ ja:
       location: 日産スタジアム
       date: 2015-12-14
   member:
-    list: メンバー一覧
-    how_to_add: メンバー追加は管理者に依頼してください。

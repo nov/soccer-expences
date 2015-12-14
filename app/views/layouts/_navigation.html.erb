@@ -1,18 +1,3 @@
-<%
-  navi_menus = [
-    {
-      link_text: 'event.list'.t,
-      active_on: 'dashboards#show',
-      path: dashboard_path
-    },
-    {
-      link_text: 'member.list'.t,
-      active_on: 'members#index',
-      path: members_path
-    }
-  ]
-%>
-
 <div class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -27,8 +12,7 @@
       <% if approved_access? %>
         <ul class="nav navbar-nav">
           <% navi_menus.each do |menu| %>
-            <% options = {class: 'active'} if "#{controller_name}##{action_name}" == menu[:active_on] %>
-            <%= content_tag :li, options do %>
+            <%= content_tag :li, navi_options_for(menu) do %>
               <% link_to menu[:link_text], menu[:path] %>
             <% end %>
           <% end %>
