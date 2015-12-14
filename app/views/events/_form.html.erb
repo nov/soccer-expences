@@ -30,7 +30,7 @@
 
       <div class="form-group label-static <%= 'has-warning' if event.errors[:cost_from_members_budget].present? %>">
         <%= f.label :cost_from_members_budget, Event.human_attribute_name(:cost_from_members_budget), class: 'control-label' %>
-        <%= f.number_field :cost_from_members_budget, class: 'form-control', placeholder: 'event.placeholder.total_cost'.t %>
+        <%= f.number_field :cost_from_members_budget, class: 'form-control', placeholder: 'event.placeholder.cost'.t %>
         <% if event.errors[:cost_from_members_budget].present? %>
           <span class="help-block"><%= event.errors[:cost_from_members_budget].first %></span>
         <% end %>

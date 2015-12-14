@@ -90,13 +90,14 @@ ja:
       title: 横浜市大会 予選3回戦
       location: 日産スタジアム
       date: 2015-12-14
+      cost: 1000 (金額確定まで省略可)
   member:
     new: 選手登録
     edit: 選手編集
     event_history: 参加遠征一覧
     placeholder:
-      display_name: 元石川 三郎
-      description: あだ名 etc. (省略可)
+      display_name: 元石川 翼
+      description: モトイシカワ ツバサ (省略可)
       initial_budget: 5000
   account:
     control: 権限管理
