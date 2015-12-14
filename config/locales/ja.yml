@@ -6,12 +6,8 @@ ja:
           attributes:
             title:
               blank: タイトルを入力してください。
-              too_short: タイトルが短すぎます。
-              too_long: タイトルが長すぎます。
             location:
               blank: 場所を入力してください。
-              too_short: 場所が短すぎます。
-              too_long: 場所が長すぎます。
             date:
               blank: 日付を入力してください。
   site:
