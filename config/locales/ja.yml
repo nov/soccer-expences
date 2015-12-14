@@ -1,20 +1,20 @@
 ja:
   activerecord:
     models:
-      event: イベント
-      member: チームメンバー
-      account: サイトユーザー
+      event: 遠征
+      member: 選手
+      account: ユーザ
     attributes:
       event:
         title: タイトル
         date: 日付
         location: 場所
-        attendees: 参加者
-        total_attendees: 参加者数
+        attendees: 参加選手
+        total_attendees: 選手数
         total_cost: 総費用
-        cost_per_member: 費用 / 参加者
+        cost_per_member: 費用 / 選手
         cost_from_team_budget: チーム負担費用
-        cost_from_members_budget: 参加者負担費用
+        cost_from_members_budget: 選手負担費用
       member:
         display_name: 名前
         description: 備考
@@ -44,12 +44,18 @@ ja:
       x_seconds:
         one:   "1秒"
         other: "%{count}秒"
+      x_minutes:
+        one:   "1分"
+        other: "%{count}分"
       less_than_x_minutes:
         one:   "1分"
         other: "%{count}分"
       about_x_hours:
         one:   "約1時間"
         other: "約%{count}時間"
+      x_hours:
+        one:   "1時間"
+        other: "%{count}時間"
       x_days:
         one:   "1日"
         other: "%{count}日"
@@ -78,16 +84,16 @@ ja:
   dashboard:
     update: 費用再計算
   event:
-    new: イベント登録
-    edit: イベント編集
+    new: 遠征登録
+    edit: 遠征編集
     placeholder:
       title: 横浜市大会 予選3回戦
       location: 日産スタジアム
       date: 2015-12-14
   member:
-    new: メンバー登録
-    edit: メンバー編集
-    event_history: 参加イベント一覧
+    new: 選手登録
+    edit: 選手編集
+    event_history: 参加遠征一覧
     placeholder:
       display_name: 元石川 三郎
       description: あだ名 etc. (省略可)
