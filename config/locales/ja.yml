@@ -29,6 +29,7 @@ ja:
       messages:
         blank: "%{attribute}を入力してください。"
         greater_than_or_equal_to: "%{count}以上で入力してください。"
+        taken: "すでに登録済です。"
   flash:
     create:
       success: 登録が成功しました。
