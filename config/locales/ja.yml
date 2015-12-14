@@ -9,8 +9,10 @@ ja:
         date: 日付
         location: 場所
         attendees: 参加者
-        num_of_attendees: 参加者数
+        total_attendees: 参加者数
         total_cost: 総費用
+        cost_from_team_budget: チーム負担費用
+        cost_from_members_budget: 参加者負担費用
       member:
         display_name: 名前
         description: 備考
@@ -18,10 +20,7 @@ ja:
     errors:
       messages:
         blank: "%{attribute}を入力してください。"
-        member:
-          attributes:
-            initial_budget:
-              greater_than_or_equal_to: "%{count}円以上で入力してください。"
+        greater_than_or_equal_to: "%{count}以上で入力してください。"
   flash:
     create:
       success: 登録が成功しました。

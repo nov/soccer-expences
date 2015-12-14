@@ -3,11 +3,21 @@ class Event < ActiveRecord::Base
   has_many :members, through: :event_members
 
   validates :title, :location, :date, presence: true
+  validates :cost_from_members_budget, :cost_from_team_budget, numericality: {
+    only_integer: true,
+    greater_than_or_equal_to: 0
+  }
   after_initialize :setup_date
-
-  alias_method :attendance, :event_members
 
   def setup_date
     self.date ||= Date.today
+  end
+
+  def total_attendees
+    event_members_count
+  end
+
+  def total_cost
+    cost_from_members_budget + cost_from_team_budget
   end
 end

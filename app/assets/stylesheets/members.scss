@@ -25,10 +25,18 @@
           top: 10px;
         }
       }
+      &.attended {
+        background: #009688;
+        color: #fff;
+        .list-group-item-heading {
+          color: #fff;
+        }
+        .row-content {
+          .least-content {
+            color: #fff;
+          }
+        }
+      }
     }
-  }
-  .attended {
-    background: #009688;
-    color: #fff;
   }
 }

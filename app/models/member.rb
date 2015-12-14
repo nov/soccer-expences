@@ -6,7 +6,7 @@ class Member < ActiveRecord::Base
   validates :display_name, uniqueness: true
   validates :initial_budget, numericality: {
     only_integer: true,
-    greater_than_or_equal_to: 0.0
+    greater_than_or_equal_to: 0
   }
   validates :spent_budget, numericality: {
     greater_than_or_equal_to: 0.0
