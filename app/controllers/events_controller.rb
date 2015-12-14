@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_filter :set_event, except: [:new, :create]
 
   def show
-    @members = Member.all
+    @members = Member.order(:id)
   end
 
   def new

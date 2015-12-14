@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
   before_filter :set_account, except: :index
 
   def index
-    @accounts = Account.all
+    @accounts = Account.order(:id)
   end
 
   def approve

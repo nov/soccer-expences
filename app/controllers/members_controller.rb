@@ -3,7 +3,7 @@ class MembersController < ApplicationController
   before_filter :set_member, except: [:index, :new, :create]
 
   def index
-    @members = Member.all
+    @members = Member.order(:id)
   end
 
   def show
