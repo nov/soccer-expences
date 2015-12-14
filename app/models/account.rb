@@ -10,4 +10,19 @@ class Account < ActiveRecord::Base
     self.approved = true
     self.save!
   end
+
+  def pending?
+    !self.approved?
+  end
+
+  def role
+    case
+    when admin?
+      :admin
+    when approved?
+      :approved
+    else
+      :pending
+    end
+  end
 end

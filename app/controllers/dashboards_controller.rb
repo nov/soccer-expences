@@ -3,7 +3,8 @@ class DashboardsController < ApplicationController
   before_filter :require_authentication
 
   def show
-    @events = Event.order(date: :desc).all
+    @events = Event.order(date: :desc)
+    @accounts = Account.where(approved: false)
   end
 
   def update

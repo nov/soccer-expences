@@ -10,6 +10,11 @@ module NavigationHelper
         link_text: Member.model_name.human,
         active_on: [:members],
         path: members_path
+      },
+      {
+        link_text: Account.model_name.human,
+        active_on: [:accounts],
+        path: accounts_path
       }
     ]
   end

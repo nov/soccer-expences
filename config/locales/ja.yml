@@ -2,7 +2,8 @@ ja:
   activerecord:
     models:
       event: イベント
-      member: メンバー
+      member: チームメンバー
+      account: サイトユーザー
     attributes:
       event:
         title: タイトル
@@ -20,6 +21,10 @@ ja:
         initial_budget: 入金額
         spent_budget: 消費額
         remaining_budget: 残金
+      account:
+        display_name: 名前
+        role: アクセス権限
+        last_logged_in_at: 最終ログイン日
     errors:
       messages:
         blank: "%{attribute}を入力してください。"
@@ -29,6 +34,37 @@ ja:
       success: 登録が成功しました。
     update:
       success: 編集が成功しました。
+  datetime:
+    ago: "%{distance}前"
+    distance_in_words:
+      half_a_minute: "30秒前後"
+      less_than_x_seconds:
+        one:   "1秒"
+        other: "%{count}秒"
+      x_seconds:
+        one:   "1秒"
+        other: "%{count}秒"
+      less_than_x_minutes:
+        one:   "1分"
+        other: "%{count}分"
+      about_x_hours:
+        one:   "約1時間"
+        other: "約%{count}時間"
+      x_days:
+        one:   "1日"
+        other: "%{count}日"
+      about_x_months:
+        one:   "約1ヶ月"
+        other: "約%{count}ヶ月"
+      x_months:
+        one:   "1ヶ月"
+        other: "%{count}ヶ月"
+      about_x_years:
+        one:   "約1年"
+        other: "約%{count}年"
+      over_x_years:
+        one:   "1年以上"
+        other: "%{count}年以上"
   site:
     title: Soccer Expenses
     sub_title: 元石川SC 4年生チーム 経費管理サイト
@@ -56,3 +92,6 @@ ja:
       display_name: 元石川 三郎
       description: あだ名 etc. (省略可)
       initial_budget: 5000
+  account:
+    control: 権限管理
+    approve: 閲覧権付与
