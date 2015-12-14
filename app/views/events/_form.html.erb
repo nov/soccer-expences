@@ -1,47 +1,57 @@
 <div class="well bs-component"%>
   <%= form_for event do |f| %>
-    <fieldset>
+    <fieldset class="form-horizontal">
       <div class="form-group label-static <%= 'has-warning' if event.errors[:title].present? %>">
-        <%= f.label :title, Event.human_attribute_name(:title), class: 'control-label' %>
-        <%= f.text_field :title, class: 'form-control', placeholder: 'event.placeholder.title'.t, autofocus: true %>
-        <% if event.errors[:title].present? %>
-          <span class="help-block"><%= event.errors[:title].first %></span>
-        <% end %>
+        <%= f.label :title, Event.human_attribute_name(:title), class: 'col-md-2 control-label' %>
+        <div class="col-md-10">
+          <%= f.text_field :title, class: 'form-control', placeholder: 'event.placeholder.title'.t, autofocus: true %>
+          <% if event.errors[:title].present? %>
+            <span class="help-block"><%= event.errors[:title].first %></span>
+          <% end %>
+        </div>
       </div>
 
       <div class="form-group label-static <%= 'has-warning' if event.errors[:location].present? %>">
-        <%= f.label :location, Event.human_attribute_name(:location), class: 'control-label' %>
-        <%= f.text_field :location, class: 'form-control', placeholder: 'event.placeholder.location'.t %>
-        <% if event.errors[:location].present? %>
-          <span class="help-block"><%= event.errors[:location].first %></span>
-        <% end %>
+        <%= f.label :location, Event.human_attribute_name(:location), class: 'col-md-2 control-label' %>
+        <div class="col-md-10">
+          <%= f.text_field :location, class: 'form-control', placeholder: 'event.placeholder.location'.t %>
+          <% if event.errors[:location].present? %>
+            <span class="help-block"><%= event.errors[:location].first %></span>
+          <% end %>
+        </div>
       </div>
 
       <div class="form-group label-static <%= 'has-warning' if event.errors[:date].present? %>">
-        <%= f.label :date, Event.human_attribute_name(:date), class: 'control-label' %>
-        <%= f.text_field :date, class: 'form-control', placeholder: 'event.placeholder.date'.t, data: {
-          provide: 'datepicker',
-          'date-format': "yyyy-mm-dd"
-        } %>
-        <% if event.errors[:date].present? %>
-          <span class="help-block"><%= event.errors[:date].first %></span>
-        <% end %>
+        <%= f.label :date, Event.human_attribute_name(:date), class: 'col-md-2 control-label' %>
+        <div class="col-md-10">
+          <%= f.text_field :date, class: 'form-control', placeholder: 'event.placeholder.date'.t, data: {
+            provide: 'datepicker',
+            'date-format': "yyyy-mm-dd"
+          } %>
+          <% if event.errors[:date].present? %>
+            <span class="help-block"><%= event.errors[:date].first %></span>
+          <% end %>
+        </div>
       </div>
 
       <div class="form-group label-static <%= 'has-warning' if event.errors[:cost_from_members_budget].present? %>">
-        <%= f.label :cost_from_members_budget, Event.human_attribute_name(:cost_from_members_budget), class: 'control-label' %>
-        <%= f.number_field :cost_from_members_budget, class: 'form-control', placeholder: 'event.placeholder.cost'.t %>
-        <% if event.errors[:cost_from_members_budget].present? %>
-          <span class="help-block"><%= event.errors[:cost_from_members_budget].first %></span>
-        <% end %>
+        <%= f.label :cost_from_members_budget, Event.human_attribute_name(:cost_from_members_budget), class: 'col-md-2 control-label' %>
+        <div class="col-md-10">
+          <%= f.number_field :cost_from_members_budget, class: 'form-control', placeholder: 'event.placeholder.cost'.t %>
+          <% if event.errors[:cost_from_members_budget].present? %>
+            <span class="help-block"><%= event.errors[:cost_from_members_budget].first %></span>
+          <% end %>
+        </div>
       </div>
 
       <div class="form-group label-static <%= 'has-warning' if event.errors[:cost_from_team_budget].present? %>">
-        <%= f.label :cost_from_team_budget, Event.human_attribute_name(:cost_from_team_budget), class: 'control-label' %>
-        <%= f.number_field :cost_from_team_budget, class: 'form-control', placeholder: 'event.placeholder.cost'.t %>
-        <% if event.errors[:cost_from_team_budget].present? %>
-          <span class="help-block"><%= event.errors[:cost_from_team_budget].first %></span>
-        <% end %>
+        <%= f.label :cost_from_team_budget, Event.human_attribute_name(:cost_from_team_budget), class: 'col-md-2 control-label' %>
+        <div class="col-md-10">
+          <%= f.number_field :cost_from_team_budget, class: 'form-control', placeholder: 'event.placeholder.cost'.t %>
+          <% if event.errors[:cost_from_team_budget].present? %>
+            <span class="help-block"><%= event.errors[:cost_from_team_budget].first %></span>
+          <% end %>
+        </div>
       </div>
 
       <nav>
