@@ -3,7 +3,7 @@
     <fieldset>
       <div class="form-group label-static <%= 'has-warning' if @member.errors[:display_name].present? %>">
         <%= f.label :display_name, Member.human_attribute_name(:display_name), class: 'control-label' %>
-        <%= f.text_field :display_name, class: 'form-control', placeholder: 'member.placeholder.display_name'.t %>
+        <%= f.text_field :display_name, class: 'form-control', placeholder: 'member.placeholder.display_name'.t, autofocus: true %>
         <% if @member.errors[:display_name].present? %>
           <span class="help-block"><%= @member.errors[:display_name].first %></span>
         <% end %>

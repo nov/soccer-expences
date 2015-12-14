@@ -11,5 +11,42 @@
         <p class="lead"><%= @event.location %> @ <%= @event.date %></p>
       </div>
     </div>
+    <div class="col-md-12">
+      <div class="members bs-component">
+        <h2><%= Event.human_attribute_name(:attendees) %></h2>
+        <%= render 'members/list', members: @members, event: @event, selectable: true %>
+      </div>
+    </div>
   </div>
 </div>
+
+<script>
+  $(function () {
+    var init_member_selector = function (members) {
+      $.each(members, function (index, member) {
+        $('#member_' + member.id).addClass('attended');
+      });
+
+      $('.members .selectable').click(function () {
+        var element = $(this);
+        element.addClass('loading');
+        $.ajax($(this).data('endpoint'), {
+          type: 'put'
+        }).done(function (data) {
+          console.info(data);
+          if (data.status == 'attended') {
+            element.addClass('attended', {duration: 300});
+          } else {
+            element.removeClass('attended', {duration: 300});
+          }
+        }).fail(function (data) {
+          element.effect('highlight', {color: '#f66'}, 1000);
+        }).always(function (data) {
+          element.removeClass('loading');
+        });
+      });
+    };
+
+    $.getJSON('<%= event_members_path(@event) %>', init_member_selector);
+  });
+</script>

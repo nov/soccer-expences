@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :event_members
-  resources :members
-  resources :events, only: [:show, :new, :edit, :update, :create]
+  resources :members, except: :destroy
+  resources :events, only: [:show, :new, :edit, :update, :create] do
+    resources :members, controller: :event_members, only: [:index, :update]
+  end
   namespace :connect do
     resource :facebook, only: :create
   end

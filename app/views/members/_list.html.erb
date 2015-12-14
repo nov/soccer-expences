@@ -1,19 +1,33 @@
 <div class="bs-docs-section">
   <div class="row">
-    <% @members.each_slice(
-      [@members.count / 3 + 1, 20].max
-    ) do |members| %>
+    <% members.each_slice(
+      [members.count / 3 + 1, 20].max
+    ) do |slice| %>
       <div class="col-md-4">
         <div class="bs-component">
           <div class="list-group">
-            <% members.each do |member| %>
-              <div class="list-group-item">
+            <% slice.each do |member| %>
+              <%
+                options = {
+                  id: "member_#{member.id}",
+                  class: 'list-group-item'
+                }
+                if local_assigns[:selectable]
+                  options[:class] += ' selectable'
+                  options[:data] = {
+                    endpoint: event_member_path(event, member)
+                  }
+                end
+              %>
+              <%= content_tag :div, options do %>
                 <div class="row-action-primary">
-                  <% if local_assigns[:editable] %>
-                    <%= link_to material_icon.tag_faces, member_path(member), class: 'icon-link' %>
-                  <% else %>
-                    <%= material_icon.tag_faces %>
-                  <% end %>
+                  <div class="icon-wrapper">
+                    <% if local_assigns[:editable] %>
+                      <%= link_to material_icon.tag_faces, member_path(member), class: 'icon-link' %>
+                    <% else %>
+                      <%= material_icon.tag_faces %>
+                    <% end %>
+                  </div>
                 </div>
                 <div class="row-content">
                   <div class="least-content"><%= number_to_currency member.remaining_budget, unit: '¥', precision: 0 %></div>
@@ -22,14 +36,14 @@
                   </h4>
                   <p class="list-group-item-text"><%= member.description %></p>
                 </div>
-              </div>
+              <% end %>
               <div class="list-group-separator"></div>
             <% end %>
           </div>
         </div>
       </div>
     <% end %>
-    <% if admin_access? %>
+    <% if admin_access? && local_assigns[:editable] %>
       <div class="col-md-12">
         <div class="bs-component">
           <nav>

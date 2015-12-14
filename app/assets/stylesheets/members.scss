@@ -16,4 +16,19 @@
   nav {
     text-align: right;
   }
+  .list-group {
+    .list-group-item {
+      padding: 5px;
+      border-radius: 5px;
+      .row-content {
+        .least-content {
+          top: 10px;
+        }
+      }
+    }
+  }
+  .attended {
+    background: #009688;
+    color: #fff;
+  }
 }

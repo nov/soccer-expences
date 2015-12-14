@@ -8,6 +8,7 @@ ja:
         title: タイトル
         date: 日付
         location: 場所
+        attendees: 参加者
         num_of_attendees: 参加者数
         total_cost: 総費用
       member:

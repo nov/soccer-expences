@@ -1,5 +1,5 @@
 <% if approved_access? %>
-  <%= render 'events/list' %>
+  <%= render 'events/list', events: @events %>
 <% else %>
   <p><%= 'message.approval_required'.t %></p>
 <% end %>
