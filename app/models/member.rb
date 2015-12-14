@@ -21,4 +21,15 @@ class Member < ActiveRecord::Base
   def remaining_budget
     (initial_budget - spent_budget).to_i
   end
+
+  def calculate_spent_budget
+    self.spent_budget = events.to_a.sum(&:cost_per_member)
+    save
+  end
+
+  class << self
+    def calculate_spent_budget
+      includes(:events).collect(&:calculate_spent_budget)
+    end
+  end
 end

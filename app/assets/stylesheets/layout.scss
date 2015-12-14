@@ -23,6 +23,12 @@
   }
 }
 
+td {
+  &.numeric_field {
+    text-align: right;
+  }
+}
+
 a {
   &.icon-link:hover {
     text-decoration: none;

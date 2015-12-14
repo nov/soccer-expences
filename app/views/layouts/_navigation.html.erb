@@ -17,6 +17,9 @@
             <% end %>
           <% end %>
         </ul>
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'dashboard.update'.t, dashboard_path, method: :put %></li>
+        </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if authenticated? %>

@@ -7,6 +7,7 @@ class MembersController < ApplicationController
   end
 
   def show
+    @events = @member.events.order(date: :desc)
   end
 
   def new

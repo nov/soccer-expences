@@ -20,4 +20,12 @@ class Event < ActiveRecord::Base
   def total_cost
     cost_from_members_budget + cost_from_team_budget
   end
+
+  def cost_per_member
+    if total_attendees == 0
+      0
+    else
+      total_cost.to_f / total_attendees
+    end
+  end
 end

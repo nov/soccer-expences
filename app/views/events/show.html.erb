@@ -1,14 +1,21 @@
-<div class="bs-docs-section">
+<section class="bs-docs-section">
   <div class="row">
     <div class="col-md-12">
       <div class="bs-component">
-        <h2>
-          <%= @event.title %>
-          <% if admin_access? %>
-            <small><%= link_to material_icon.mode_edit.md_18, edit_event_path(@event) %></small>
-          <% end %>
-        </h2>
-        <p class="lead"><%= @event.location %> @ <%= @event.date %></p>
+        <div class="page-header">
+          <h2>
+            <%= @event.title %>
+            <% if admin_access? %>
+              <small><%= link_to material_icon.mode_edit.md_18, edit_event_path(@event) %></small>
+            <% end %>
+          </h2>
+          <p class="lead"><%= @event.location %> @ <%= @event.date %></p>
+          <p>
+            <%= number_to_currency @event.cost_from_members_budget, unit: '¥', precision: 0 %> (<%= Event.human_attribute_name(:cost_from_members_budget) %>) +
+            <%= number_to_currency @event.cost_from_team_budget,    unit: '¥', precision: 0 %> (<%= Event.human_attribute_name(:cost_from_team_budget) %>) =
+            <%= number_to_currency @event.total_cost,               unit: '¥', precision: 0 %> (<%= Event.human_attribute_name(:total_cost) %>)
+          </p>
+        </div>
       </div>
     </div>
     <div class="col-md-12">
@@ -18,7 +25,7 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <script>
   $(function () {
@@ -27,24 +34,26 @@
         $('#member_' + member.id).addClass('attended');
       });
 
-      $('.members .selectable').click(function () {
-        var element = $(this);
-        element.addClass('loading');
-        $.ajax($(this).data('endpoint'), {
-          type: 'put'
-        }).done(function (data) {
-          console.info(data);
-          if (data.status == 'attended') {
-            element.addClass('attended', {duration: 300});
-          } else {
-            element.removeClass('attended', {duration: 300});
-          }
-        }).fail(function (data) {
-          element.effect('highlight', {color: '#f66'}, 1000);
-        }).always(function (data) {
-          element.removeClass('loading');
+      <% if admin_access? %>
+        $('.members .selectable').click(function () {
+          var element = $(this);
+          element.addClass('loading');
+          $.ajax($(this).data('endpoint'), {
+            type: 'put'
+          }).done(function (data) {
+            console.info(data);
+            if (data.status == 'attended') {
+              element.addClass('attended', {duration: 300});
+            } else {
+              element.removeClass('attended', {duration: 300});
+            }
+          }).fail(function (data) {
+            element.effect('highlight', {color: '#f66'}, 1000);
+          }).always(function (data) {
+            element.removeClass('loading');
+          });
         });
-      });
+      <% end %>
     };
 
     $.getJSON('<%= event_members_path(@event) %>', init_member_selector);

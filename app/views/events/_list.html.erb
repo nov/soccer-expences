@@ -9,8 +9,10 @@
               <th><%= Event.human_attribute_name(:title) %></th>
               <th><%= Event.human_attribute_name(:location) %></th>
               <th><%= Event.human_attribute_name(:total_attendees) %></th>
-              <th><%= Event.human_attribute_name(:total_cost) %></th>
-              <th></th>
+              <th><%= Event.human_attribute_name(:cost_per_member) %></th>
+              <% if local_assigns[:editable] %>
+                <th></th>
+              <% end %>
             </tr>
           </thead>
           <tbody>
@@ -19,8 +21,8 @@
                 <td><%= event.date %></td>
                 <td><%= event.title %></td>
                 <td><%= event.location %></td>
-                <td><%= event.total_attendees %></td>
-                <td><%= number_to_currency event.total_cost, unit: '¥', precision: 0 %></td>
+                <td class="numeric_field"><%= event.total_attendees %></td>
+                <td class="numeric_field"><%= number_to_currency event.cost_per_member, unit: '¥', precision: 2 %></td>
                 <td>
                   <%= link_to material_icon.mode_edit.md_18, event_path(event) %>
                 </td>
@@ -28,7 +30,7 @@
             <% end %>
           </tbody>
         </table>
-        <% if admin_access? %>
+        <% if admin_access? && local_assigns[:editable] %>
           <nav>
             <%= link_to new_event_path, class: 'btn btn-primary btn-fab' do %>
               <%= material_icon.add %>

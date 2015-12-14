@@ -11,12 +11,15 @@ ja:
         attendees: 参加者
         total_attendees: 参加者数
         total_cost: 総費用
+        cost_per_member: 費用 / 参加者
         cost_from_team_budget: チーム負担費用
         cost_from_members_budget: 参加者負担費用
       member:
         display_name: 名前
         description: 備考
         initial_budget: 入金額
+        spent_budget: 消費額
+        remaining_budget: 残金
     errors:
       messages:
         blank: "%{attribute}を入力してください。"
@@ -35,6 +38,9 @@ ja:
     logout: ログアウト (%{display_name})
   message:
     approval_required: このサイトのコンテンツを閲覧するには、管理者の承認が必要です。
+    spent_budget_recalculated: 全員の費用の再計算が終了しました。
+  dashboard:
+    update: 費用再計算
   event:
     new: イベント登録
     edit: イベント編集
@@ -45,8 +51,8 @@ ja:
   member:
     new: メンバー登録
     edit: メンバー編集
+    event_history: 参加イベント一覧
     placeholder:
       display_name: 元石川 三郎
       description: あだ名 etc. (省略可)
       initial_budget: 5000
-
