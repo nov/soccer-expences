@@ -13,6 +13,13 @@ class AccountsController < ApplicationController
     }
   end
 
+  def admin
+    @account.admin!
+    redirect_to accounts_url, flash: {
+      success: 'flash.update.success'.t
+    }
+  end
+
   private
 
   def set_account

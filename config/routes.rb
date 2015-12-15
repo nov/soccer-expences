@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :accounts, only: [:index] do
     member do
       post :approve
+      post :admin
     end
   end
   resources :members, except: :destroy

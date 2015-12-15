@@ -11,10 +11,6 @@ class Account < ActiveRecord::Base
     self.save!
   end
 
-  def pending?
-    !self.approved?
-  end
-
   def role
     case
     when admin?

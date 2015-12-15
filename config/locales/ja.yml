@@ -102,4 +102,5 @@ ja:
       initial_budget: 5000
   account:
     control: 権限管理
-    approve: 閲覧権付与
+    approve: 閲覧権限付与
+    adminize: 管理者権限付与
