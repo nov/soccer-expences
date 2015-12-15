@@ -2,6 +2,8 @@ require 'url_safe_base64'
 
 class Connect::Facebook < ActiveRecord::Base
   belongs_to :account
+  validates :identifier, :access_token, null: false
+  validates :identifier, unique: true
 
   def profile
     @profile ||= FbGraph2::User.me(access_token).fetch(
