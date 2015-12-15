@@ -30,8 +30,9 @@ unless Rails.env.production?
   }]
 
   50.times do |i|
-  Member.create(
-    display_name: "元石川 #{i + 1}号機",
-    description: "モトイシの#{i + 1}番"
-  )
+    Member.create(
+      display_name: "元石川 #{i + 1}号機",
+      description: "モトイシの#{i + 1}番"
+    )
+  end
 end

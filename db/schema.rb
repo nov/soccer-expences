@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215030116) do
+ActiveRecord::Schema.define(version: 20151214055855) do
 
   create_table "accounts", force: :cascade do |t|
     t.boolean  "admin",             default: false
