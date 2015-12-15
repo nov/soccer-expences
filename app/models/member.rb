@@ -2,7 +2,7 @@ class Member < ActiveRecord::Base
   has_many :event_members
   has_many :events, through: :event_members
 
-  validates :display_name, :initial_budget, :remaining_budget, :spent_budget, presence: true
+  validates :display_name, :initial_budget, :spent_budget, presence: true
   validates :display_name, uniqueness: true
   validates :initial_budget, numericality: {
     only_integer: true,
