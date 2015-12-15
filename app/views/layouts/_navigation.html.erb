@@ -13,19 +13,28 @@
         <ul class="nav navbar-nav">
           <% navi_menus.each do |menu| %>
             <%= content_tag :li, navi_options_for(menu) do %>
-              <% link_to menu[:link_text], menu[:path] %>
+              <%= link_to menu[:path] do %>
+                <%= material_icon.send(menu[:icon]) %>
+                <%= menu[:link_text] %>
+              <% end %>
             <% end %>
           <% end %>
         </ul>
         <ul class="nav navbar-nav">
-          <li><%= link_to 'dashboard.update'.t, dashboard_path, method: :put %></li>
+          <li>
+            <%= link_to dashboard_path, method: :put do %>
+              <%= material_icon.attach_money %>
+              <%= 'dashboard.update'.t %>
+            <% end %>
+          </li>
         </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if authenticated? %>
           <li>
-            <%= link_to session_path, class: 'include-icon', method: :delete do %>
-              <%= 'navi.logout'.t(display_name: current_account.display_name) %>
+            <%= link_to session_path, method: :delete do %>
+              <%= current_account.display_name %>
+              <%= material_icon.exit_to_app %>
             <% end %>
           </li>
         <% else %>

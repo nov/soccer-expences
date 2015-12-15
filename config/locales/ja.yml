@@ -3,7 +3,7 @@ ja:
     models:
       event: 遠征
       member: 選手
-      account: ユーザ
+      account: 管理者
     attributes:
       event:
         title: タイトル
@@ -78,7 +78,6 @@ ja:
     copyright: 2015 元石川SC
   navi:
     login_with_facebook: Facebook ID でログイン
-    logout: ログアウト (%{display_name})
   message:
     approval_required: このサイトのコンテンツを閲覧するには、管理者の承認が必要です。
     spent_budget_recalculated: 全員の費用の再計算が終了しました。
@@ -104,3 +103,7 @@ ja:
     control: 権限管理
     approve: 閲覧権限付与
     adminize: 管理者権限付与
+    access:
+      admin: 管理者
+      approved: 閲覧のみ
+      pending: 承認待ち
