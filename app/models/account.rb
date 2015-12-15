@@ -16,7 +16,7 @@ class Account < ActiveRecord::Base
     when admin?
       :admin
     when approved?
-      :approved
+      :viewer
     else
       :pending
     end

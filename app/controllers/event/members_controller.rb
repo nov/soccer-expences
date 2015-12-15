@@ -1,6 +1,6 @@
-class EventMembersController < ApplicationController
+class Event::MembersController < ApplicationController
   before_filter :require_admin_access, except: :index
-  before_filter :set_event
+  before_filter :require_event_context
   before_filter :set_member, except: :index
 
   def index
@@ -16,10 +16,6 @@ class EventMembersController < ApplicationController
   end
 
   private
-
-  def set_event
-    @event = Event.find params[:event_id]
-  end
 
   def set_member
     @member = Member.find params[:id]

@@ -17,7 +17,7 @@
             <% accounts.each do |account| %>
               <tr>
                 <td><%= account.display_name %></td>
-                <td><%= "account.access.#{account.role}".t %></td>
+                <td><%= "account.role.#{account.role}".t %></td>
                 <td>
                   <% if account.last_logged_in_at? %>
                     <%= 'datetime.ago'.t(distance: time_ago_in_words(account.last_logged_in_at)) %>
@@ -31,10 +31,10 @@
                       case account.role
                       when :admin
                         '--'
-                      when :approved
-                        link_to 'account.adminize'.t, admin_account_path(account), method: :post
+                      when :viewer
+                        link_to 'account.adminize'.t, account_admin_path(account), method: :post
                       else
-                        link_to 'account.approve'.t, approve_account_path(account), method: :post
+                        link_to 'account.approve'.t, account_viewer_path(account), method: :post
                       end
                     %>
                   </td>

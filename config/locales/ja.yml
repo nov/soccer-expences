@@ -103,7 +103,7 @@ ja:
     control: 権限管理
     approve: 閲覧権限付与
     adminize: 管理者権限付与
-    access:
+    role:
       admin: 管理者
-      approved: 閲覧のみ
+      viewer: 閲覧のみ
       pending: 承認待ち
