@@ -1,1 +1,38 @@
-
+<section class="bs-docs-section">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="bs-component">
+        <h2><%= 'top.for_all.heading'.t %></h2>
+        <p class="lead"><%= 'top.for_all.description'.t %></p>
+        <p>
+          <%= link_to '#', id: 'fb_login_button', class: 'btn btn-raised btn-primary' do %>
+            <%= 'top.login_with_facebook'.t %>
+            <%= material_icon.exit_to_app %>
+          <% end %>
+          <%= content_for :bottom do %>
+            <script>
+              $(function () {
+                $('#fb_login_button').click(function () {
+                  login_with_fb_cookie();
+                  return false;
+                });
+              });
+            </script>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="bs-component">
+        <h2><%= 'top.for_staff.heading'.t %></h2>
+        <p class="lead"><%= 'top.for_staff.description'.t %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="bs-component">
+        <h2><%= 'top.for_accountant.heading'.t %></h2>
+        <p class="lead"><%= 'top.for_accountant.description'.t %></p>
+      </div>
+    </div>
+  </div>
+</section>

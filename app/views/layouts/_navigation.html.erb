@@ -30,18 +30,28 @@
         </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
-        <% if authenticated? %>
-          <li>
+        <li>
+          <% if authenticated? %>
             <%= link_to session_path, method: :delete do %>
-              <%= current_account.display_name %>
+              <%= 'navi.logout'.t %>
               <%= material_icon.exit_to_app %>
             <% end %>
-          </li>
-        <% else %>
-          <li>
-            <%= render 'layouts/fb_login_button' %>
-          </li>
-        <% end %>
+          <% else %>
+            <%= link_to '#', id: 'fb_login_navi' do %>
+              <%= 'navi.login'.t %>
+              <%= material_icon.exit_to_app %>
+            <% end %>
+            <%= content_for :bottom do %>
+              <script>
+                $(function () {
+                  $('#fb_login_navi').click(function () {
+                    login_with_fb_cookie();
+                    return false;
+                  });
+                });
+              </script>
+            <% end %>
+          <% end %>
         </li>
       </ul>
     </div>

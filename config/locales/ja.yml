@@ -77,10 +77,25 @@ ja:
     sub_title: 元石川SC 4年生チーム 経費管理サイト
     copyright: 2015 元石川SC
   navi:
-    login_with_facebook: Facebook ID でログイン
+    login: ログイン
+    logout: ログアウト
   message:
     approval_required: このサイトのコンテンツを閲覧するには、管理者の承認が必要です。
     spent_budget_recalculated: 全員の費用の再計算が終了しました。
+  top:
+    for_all:
+      heading: みなさんへ
+      description: このサイトは元石川SCの経費計算用サイトです。管理者に承認された方はデータ閲覧が可能です。
+    for_staff:
+      heading: スタッフの方へ
+      description: >
+        遠征先でスマホから遠征情報および参加選手を登録できます。
+        現地で直接このサイトに情報を登録することで、経理担当の負荷を軽減することができます。
+    for_accountant:
+      heading: 経理担当の方へ
+      description: >
+        このサイトに登録された遠征情報に、後日経費情報を追加することで、各自の残予算が自動的に計算されます。
+    login_with_facebook: Facebook IDでログイン
   dashboard:
     update: 費用再計算
   event:
