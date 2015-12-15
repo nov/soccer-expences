@@ -11,9 +11,9 @@
           </h2>
           <p class="lead"><%= @member.description %></p>
           <p>
-            <%= number_to_currency @member.initial_budget,   unit: '¥', precision: 0 %> (<%= Member.human_attribute_name(:initial_budget) %>) -
-            <%= number_to_currency @member.spent_budget,     unit: '¥', precision: 0 %> (<%= Member.human_attribute_name(:spent_budget) %>) =
-            <%= number_to_currency @member.remaining_budget, unit: '¥', precision: 0 %> (<%= Member.human_attribute_name(:remaining_budget) %>)
+            <%= as_currency @member.initial_budget   %> (<%= Member.human_attribute_name(:initial_budget)   %>) -
+            <%= as_currency @member.spent_budget     %> (<%= Member.human_attribute_name(:spent_budget)     %>) =
+            <%= as_currency @member.remaining_budget %> (<%= Member.human_attribute_name(:remaining_budget) %>)
           </p>
         </div>
       </div>

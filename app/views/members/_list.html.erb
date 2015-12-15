@@ -30,7 +30,7 @@
                   </div>
                 </div>
                 <div class="row-content">
-                  <div class="least-content"><%= number_to_currency member.remaining_budget, unit: '¥', precision: 0 %></div>
+                  <div class="least-content"><%= as_currency member.remaining_budget %></div>
                   <h4 class="list-group-item-heading">
                     <%= member.display_name %>
                   </h4>

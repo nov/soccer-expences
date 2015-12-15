@@ -22,7 +22,7 @@
                 <td><%= event.title %></td>
                 <td><%= event.location %></td>
                 <td class="numeric_field"><%= event.total_attendees %></td>
-                <td class="numeric_field"><%= number_to_currency event.cost_per_member, unit: '¥', precision: 2 %></td>
+                <td class="numeric_field"><%= as_currency event.cost_per_member, precision: 2 %></td>
                 <td>
                   <%= link_to material_icon.mode_edit.md_18, event_path(event) %>
                 </td>

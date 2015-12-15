@@ -11,9 +11,9 @@
           </h2>
           <p class="lead"><%= @event.location %> @ <%= @event.date %></p>
           <p>
-            <%= number_to_currency @event.cost_from_members_budget, unit: '¥', precision: 0 %> (<%= Event.human_attribute_name(:cost_from_members_budget) %>) +
-            <%= number_to_currency @event.cost_from_team_budget,    unit: '¥', precision: 0 %> (<%= Event.human_attribute_name(:cost_from_team_budget) %>) =
-            <%= number_to_currency @event.total_cost,               unit: '¥', precision: 0 %> (<%= Event.human_attribute_name(:total_cost) %>)
+            <%= as_currency @event.cost_from_members_budget %> (<%= Event.human_attribute_name(:cost_from_members_budget) %>) +
+            <%= as_currency @event.cost_from_team_budget    %> (<%= Event.human_attribute_name(:cost_from_team_budget)    %>) =
+            <%= as_currency @event.total_cost               %> (<%= Event.human_attribute_name(:total_cost)               %>)
           </p>
         </div>
       </div>
