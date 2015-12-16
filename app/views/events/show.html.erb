@@ -51,15 +51,15 @@
           $.ajax($(this).data('endpoint'), {
             type: 'put'
           }).done(function (data) {
+            element.removeClass('loading', {duration: 300});
             if (data.status == 'attended') {
               element.addClass('attended', {duration: 300});
             } else {
               element.removeClass('attended', {duration: 300});
             }
           }).fail(function (data) {
-            element.effect('highlight', {color: '#f66'}, 1000);
-          }).always(function (data) {
             element.removeClass('loading', {duration: 300});
+            element.effect('highlight', {color: '#f66'}, 1000);
           });
         });
       <% end %>
