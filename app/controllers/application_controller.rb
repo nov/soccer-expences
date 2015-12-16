@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def action_logging
     if Rails.env.staging?
       Keen.publish "#{controller_name}##{action_name}", {
-        current_account: current_account.id,
+        current_account: current_account.try(:id),
       }
     end
   end
