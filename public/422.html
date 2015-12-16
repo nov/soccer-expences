@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <title>Soccer Expenses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="
@@ -15,21 +15,22 @@
     <style>
       body {
         padding-top: 70px;
-        @media (min-width: 768px) {
-          padding-top: 71px;
-        }
-        @media (min-width: 1200px) {
-          padding-top: 81px;
-        }
       }
-      .navbar {
-        .material-icons {
-          vertical-align: middle;
-          font-size: 20px;
-        }
-        .navbar-right {
-          text-align: right;
-        }
+      @media (min-width: 768px) {
+        body { padding-top: 71px; }
+      }
+      @media (min-width: 1200px) {
+        body { padding-top: 81px; }
+      }
+      body, h1 {
+        font-family: "RobotoDraft", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .navbar .material-icons {
+        vertical-align: middle;
+        font-size: 20px;
+      }
+      .navbar .navbar-right {
+        text-align: right;
       }
       .container {
         min-height: 700px;
