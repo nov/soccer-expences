@@ -63,3 +63,17 @@ a {
     }
   }
 }
+.btn-group-ss {
+  &.inline-right {
+    margin-left: 8px;
+  }
+  .btn.btn-fab {
+    padding: 12px;
+    height: 24px;
+    min-width: 24px;
+    width: 24px;
+    .material-icons {
+      transform: translate(-9px, -9px);
+    }
+  }
+}
