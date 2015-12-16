@@ -27,9 +27,6 @@
       }
       &.loading {
         opacity: 0.8;
-        .material-icons {
-          animation: spin 1s infinite 0.2s linear;
-        }
       }
       &.attended {
         background: #009688;

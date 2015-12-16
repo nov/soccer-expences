@@ -80,3 +80,8 @@ a {
   from {transform:rotate(0deg);}
   to {transform:rotate(360deg);}
 }
+.loading {
+  .material-icons {
+    animation: spin 1s infinite 0.2s linear;
+  }
+}

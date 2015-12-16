@@ -28,8 +28,8 @@
         <%= render 'members/list', members: @members, event: @event, selectable: true %>
         <nav>
           <%= link_to event_expense_path(@event), method: :put, class: 'btn btn-raised btn-primary' do %>
+            <%= material_icon.attach_money %>
             <%= 'event.calculate_spent_budget'.t %>
-            <%= material_icon.autorenew %>
           <% end %>
         </nav>
       </div>
