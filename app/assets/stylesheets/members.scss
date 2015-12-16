@@ -26,11 +26,9 @@
         }
       }
       &.loading {
-        opacity: 0.5;
-        .icon-wrapper {
-          background-image: image-url('loading.gif');
-          background-repeat: no-repeat;
-          background-position: center center;
+        opacity: 0.8;
+        .material-icons {
+          animation: spin 1s infinite 0.2s linear;
         }
       }
       &.attended {
@@ -38,9 +36,6 @@
         color: #fff;
         .list-group-item-heading {
           color: #fff;
-        }
-        .icon-wrapper {
-          background: none;
         }
         .row-content {
           .least-content {

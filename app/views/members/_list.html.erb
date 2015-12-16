@@ -21,13 +21,11 @@
               %>
               <%= content_tag :div, options do %>
                 <div class="row-action-primary">
-                  <div class="icon-wrapper">
-                    <% if local_assigns[:editable] %>
-                      <%= link_to material_icon.tag_faces, member_path(member), class: 'icon-link' %>
-                    <% else %>
-                      <%= material_icon.tag_faces %>
-                    <% end %>
-                  </div>
+                  <% if local_assigns[:editable] %>
+                    <%= link_to material_icon.tag_faces, member_path(member), class: 'icon-link' %>
+                  <% else %>
+                    <%= material_icon.tag_faces %>
+                  <% end %>
                 </div>
                 <div class="row-content">
                   <div class="least-content"><%= as_currency member.remaining_budget %></div>
