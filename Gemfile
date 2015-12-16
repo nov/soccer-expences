@@ -34,7 +34,7 @@ group :development do
   gem 'quiet_assets'
 end
 
-group :production do
+group :production, :staging do
   gem 'pg'
   gem 'unicorn'
   gem 'rails_12factor'
