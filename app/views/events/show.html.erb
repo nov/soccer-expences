@@ -23,7 +23,7 @@
         <h2><%= Event.human_attribute_name(:attendees) %></h2>
         <%= render 'members/list', members: @members, event: @event, selectable: true %>
         <nav>
-          <%= link_to event_path(@event), method: :put, class: 'btn btn-raised btn-primary' do %>
+          <%= link_to event_expense_path(@event), method: :put, class: 'btn btn-raised btn-primary' do %>
             <%= 'event.calculate_spent_budget'.t %>
             <%= material_icon.autorenew %>
           <% end %>

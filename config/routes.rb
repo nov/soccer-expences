@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :events, only: [:show, :new, :edit, :update, :create] do
     scope module: :event do
       resources :members, only: [:index, :update]
+      resource :expense, only: [:update]
     end
   end
   namespace :connect do
