@@ -39,4 +39,5 @@ group :production, :staging do
   gem 'unicorn'
   gem 'rails_12factor'
   gem 'newrelic_rpm'
+  gem 'keen'
 end
