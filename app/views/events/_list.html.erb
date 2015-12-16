@@ -34,7 +34,12 @@
           <% end %>
           <script>
             $('.event_row').click(function () {
-              location.href = $(this).data('endpoint');
+              var element = $(this);
+              element.addClass('active');
+              setTimeout(function () {
+                element.removeClass('active');
+                location.href = element.data('endpoint');
+              }, 200);
             });
           </script>
         <% end %>
