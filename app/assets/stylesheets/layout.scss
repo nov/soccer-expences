@@ -23,7 +23,8 @@ body {
   text-align: center;
   padding-top: 30px;
 }
-td {
+.table > tbody > tr > td {
+  padding: 12px 8px;
   &.numeric_field {
     text-align: right;
   }
