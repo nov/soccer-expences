@@ -24,10 +24,7 @@
       <div class="form-group label-static <%= 'has-warning' if event.errors[:date].present? %>">
         <%= f.label :date, Event.human_attribute_name(:date), class: 'col-md-2 control-label' %>
         <div class="col-md-10">
-          <%= f.text_field :date, class: 'form-control', placeholder: 'event.placeholder.date'.t, data: {
-            provide: 'datepicker',
-            'date-format': "yyyy-mm-dd"
-          } %>
+          <%= f.date_field :date, class: 'form-control', placeholder: 'event.placeholder.date'.t %>
           <% if event.errors[:date].present? %>
             <span class="help-block"><%= event.errors[:date].first %></span>
           <% end %>
