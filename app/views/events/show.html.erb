@@ -45,21 +45,21 @@
       });
 
       <% if admin_access? %>
-        $('.members .selectable').click(function () {
+        $('.members .selectable').ripples().click(function () {
           var element = $(this);
-          element.addClass('loading', {duration: 300});
+          element.addClass('loading');
           $.ajax($(this).data('endpoint'), {
             type: 'put'
           }).done(function (data) {
-            element.removeClass('loading', {duration: 300});
             if (data.status == 'attended') {
               element.addClass('attended', {duration: 300});
             } else {
               element.removeClass('attended', {duration: 300});
             }
           }).fail(function (data) {
-            element.removeClass('loading', {duration: 300});
             element.effect('highlight', {color: '#f66'}, 1000);
+          }).always(function (data) {
+            element.removeClass('loading');
           });
         });
       <% end %>
