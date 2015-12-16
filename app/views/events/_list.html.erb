@@ -10,32 +10,33 @@
               <th><%= Event.human_attribute_name(:location) %></th>
               <th><%= Event.human_attribute_name(:total_attendees) %></th>
               <th><%= Event.human_attribute_name(:cost_per_member) %></th>
-              <% if local_assigns[:editable] %>
-                <th></th>
-              <% end %>
             </tr>
           </thead>
           <tbody>
             <% events.each do |event| %>
-              <tr>
+              <%= content_tag :tr, class: 'event_row', data: {endpoint: event_path(event)} do %>
                 <td><%= event.date %></td>
                 <td><%= event.title %></td>
                 <td><%= event.location %></td>
                 <td class="numeric_field"><%= event.total_attendees %></td>
                 <td class="numeric_field"><%= as_currency event.cost_per_member, precision: 2 %></td>
-                <td>
-                  <%= link_to material_icon.mode_edit.md_18, event_path(event) %>
-                </td>
-              </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>
-        <% if admin_access? && local_assigns[:editable] %>
-          <nav>
-            <%= link_to new_event_path, class: 'btn btn-primary btn-fab' do %>
-              <%= material_icon.add %>
-            <% end %>
-          </nav>
+        <% if admin_access? %>
+          <% if local_assigns[:editable] %>
+            <nav>
+              <%= link_to new_event_path, class: 'btn btn-primary btn-fab' do %>
+                <%= material_icon.add %>
+              <% end %>
+            </nav>
+          <% end %>
+          <script>
+            $('.event_row').click(function () {
+              location.href = $(this).data('endpoint');
+            });
+          </script>
         <% end %>
       </div>
     </div>

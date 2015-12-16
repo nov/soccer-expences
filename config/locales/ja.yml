@@ -99,8 +99,8 @@ ja:
   dashboard:
     update: 費用再計算
   event:
-    new: 遠征登録
-    edit: 遠征編集
+    new: 遠征情報登録
+    edit: 遠征情報編集
     calculate_spent_budget: 費用計算
     placeholder:
       title: 横浜市大会 予選3回戦

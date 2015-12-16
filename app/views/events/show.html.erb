@@ -5,9 +5,6 @@
         <div class="page-header">
           <h2>
             <%= @event.title %>
-            <% if admin_access? %>
-              <small><%= link_to material_icon.mode_edit.md_18, edit_event_path(@event) %></small>
-            <% end %>
           </h2>
           <p class="lead"><%= @event.location %> @ <%= @event.date %></p>
           <p>
@@ -15,6 +12,14 @@
             <%= as_currency @event.cost_from_team_budget    %> (<%= Event.human_attribute_name(:cost_from_team_budget)    %>) =
             <%= as_currency @event.total_cost               %> (<%= Event.human_attribute_name(:total_cost)               %>)
           </p>
+          <% if admin_access? %>
+            <nav>
+              <%= link_to edit_event_path(@event), class: 'btn btn-raised btn-primary' do %>
+                <%= 'event.edit'.t %>
+                <%= material_icon.mode_edit %>
+              <% end %>
+            </nav>
+          <% end %>
         </div>
       </div>
     </div>
