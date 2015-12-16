@@ -45,13 +45,11 @@
       });
 
       <% if admin_access? %>
-        $('.members .selectable').click(function () {
+        $('.members .selectable').ripples().click(function () {
           var element = $(this);
-          element.addClass('loading');
           $.ajax($(this).data('endpoint'), {
             type: 'put'
           }).done(function (data) {
-            console.info(data);
             if (data.status == 'attended') {
               element.addClass('attended', {duration: 300});
             } else {
