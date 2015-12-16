@@ -47,7 +47,7 @@
       <% if admin_access? %>
         $('.members .selectable').click(function () {
           var element = $(this);
-          element.addClass('loading');
+          element.addClass('loading', {duration: 300});
           $.ajax($(this).data('endpoint'), {
             type: 'put'
           }).done(function (data) {
@@ -59,7 +59,7 @@
           }).fail(function (data) {
             element.effect('highlight', {color: '#f66'}, 1000);
           }).always(function (data) {
-            element.removeClass('loading');
+            element.removeClass('loading', {duration: 300});
           });
         });
       <% end %>
