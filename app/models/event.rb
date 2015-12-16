@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
     greater_than_or_equal_to: 0
   }
   after_initialize :setup_date
+  after_update :calculate_spent_budget
 
   def setup_date
     self.date ||= Date.today
@@ -27,5 +28,9 @@ class Event < ActiveRecord::Base
     else
       total_cost.to_f / total_attendees
     end
+  end
+
+  def calculate_spent_budget
+    members.includes(:events).collect(&:calculate_spent_budget)
   end
 end

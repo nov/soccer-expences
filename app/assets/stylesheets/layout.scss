@@ -1,5 +1,15 @@
-.navbar-right {
-  text-align: right;
+body {
+  padding-top: 70px;
+}
+
+.navbar {
+  .material-icons {
+    vertical-align: middle;
+    font-size: 20px;
+  }
+  .navbar-right {
+    text-align: right;
+  }
 }
 
 .container {
@@ -53,12 +63,5 @@ a {
       vertical-align: middle;
       font-size: 20px;
     }
-  }
-}
-
-.navbar {
-  .material-icons {
-    vertical-align: middle;
-    font-size: 20px;
   }
 }

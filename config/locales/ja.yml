@@ -32,9 +32,9 @@ ja:
         taken: "すでに登録済です。"
   flash:
     create:
-      success: 登録が成功しました。
+      success: 登録成功しました。
     update:
-      success: 編集が成功しました。
+      success: 更新成功しました。
   datetime:
     ago: "%{distance}前"
     distance_in_words:
@@ -101,6 +101,7 @@ ja:
   event:
     new: 遠征登録
     edit: 遠征編集
+    calculate_spent_budget: 費用計算
     placeholder:
       title: 横浜市大会 予選3回戦
       location: 日産スタジアム
