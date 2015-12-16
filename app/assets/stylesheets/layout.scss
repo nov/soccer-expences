@@ -46,14 +46,6 @@ a {
 .alert {
   border-radius: 5px;
 }
-.loading {
-  opacity: 0.7;
-  .icon-wrapper {
-    background-image: image-url('loading.gif');
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-}
 .btn {
   &.btn-fab {
     .material-icons {

@@ -25,11 +25,22 @@
           top: 10px;
         }
       }
+      .loading {
+        opacity: 0.7;
+        .icon-wrapper {
+          background-image: image-url('loading.gif');
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
+      }
       &.attended {
         background: #009688;
         color: #fff;
         .list-group-item-heading {
           color: #fff;
+        }
+        .icon-wrapper {
+          background: none;
         }
         .row-content {
           .least-content {
