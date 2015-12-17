@@ -11,13 +11,7 @@
             <%= as_currency @member.initial_budget   %> (<%= Member.human_attribute_name(:initial_budget)   %>) -
             <%= as_currency @member.spent_budget     %> (<%= Member.human_attribute_name(:spent_budget)     %>) =
             <%= as_currency @member.remaining_budget %> (<%= Member.human_attribute_name(:remaining_budget) %>)
-            <% if admin_access? %>
-              <span class="inline-right btn-group-ss">
-                <%= link_to edit_member_path(@member), class: 'btn btn-primary btn-fab' do %>
-                  <%= material_icon.mode_edit.md_18 %>
-                <% end %>
-              </span>
-            <% end %>
+            <%= render 'members/edit_button', member: @member if admin_access? %>
           </p>
         </div>
       </div>

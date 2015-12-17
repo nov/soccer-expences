@@ -21,7 +21,7 @@ module Authentication
     end
 
     def authenticated?
-      !current_account.blank?
+      current_account.present?
     end
 
     def approved_access?
@@ -71,10 +71,12 @@ module Authentication
   end
 
   def require_approved_access
+    require_authentication
     raise ApprovedAccessRequired.new unless approved_access?
   end
 
   def require_admin_access
+    require_authentication
     raise AdminAccessRequired.new unless admin_access?
   end
 

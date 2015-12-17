@@ -12,11 +12,7 @@
             <%= as_currency @event.cost_from_team_budget    %> (<%= Event.human_attribute_name(:cost_from_team_budget)    %>) =
             <%= as_currency @event.total_cost               %> (<%= Event.human_attribute_name(:total_cost)               %>)
             <% if admin_access? %>
-              <span class="inline-right btn-group-ss">
-                <%= link_to edit_event_path(@event), class: 'btn btn-primary btn-fab' do %>
-                  <%= material_icon.mode_edit.md_18 %>
-                <% end %>
-              </span>
+              <%= render 'events/edit_button', event: @event %>
             <% end %>
           </p>
         </div>
