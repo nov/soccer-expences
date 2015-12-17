@@ -4,7 +4,7 @@ class CreateConnectFacebooks < ActiveRecord::Migration
       t.belongs_to :account
       t.string :identifier, :access_token, null: false
       t.timestamps null: false
+      t.index :identifier, unique: true
     end
-    add_index :connect_facebooks, :identifier, unique: true
   end
 end

@@ -6,7 +6,7 @@ class CreateMembers < ActiveRecord::Migration
       t.integer :initial_budget, default: 5000, null: false
       t.float :spent_budget, default: 0.0
       t.timestamps null: false
+      t.index :display_name, unique: true
     end
-    add_index :members, :display_name, unique: true
   end
 end
