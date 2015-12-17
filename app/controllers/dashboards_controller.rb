@@ -4,7 +4,6 @@ class DashboardsController < ApplicationController
 
   def show
     @events = Event.order(date: :desc)
-    @accounts = Account.where(approved: false)
   end
 
   def update
