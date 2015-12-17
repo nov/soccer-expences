@@ -8,10 +8,12 @@ class Event::MembersController < ApplicationController
   end
 
   def update
-    if status = @event.event_members.toggle(@member)
-      render json: {status: status}
+    if @event.members.include? @member
+      @event.members.destroy @member
+      render json: {status: :canceled}
     else
-      render json: {status: 'error'}, status: 400
+      @event.members << @member
+      render json: {status: :attended}
     end
   end
 
