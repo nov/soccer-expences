@@ -172,8 +172,8 @@ RSpec.describe MembersController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            post :create, member: {display_name: ''}
-            response.should be_success
+            post :create, member: {display_name: 'some member'}
+            response.should redirect_to member_path(assigns(:member))
           end
         end
       end
@@ -246,9 +246,9 @@ RSpec.describe MembersController, type: :controller do
         post :create, member: {
           display_name: 'someone'
         }
-        assigns[:member].should be_persisted
-        assigns[:member].display_name.should == 'someone'
-        response.should redirect_to member_path(assigns[:member])
+        assigns(:member).should be_persisted
+        assigns(:member).display_name.should == 'someone'
+        response.should redirect_to member_path(assigns(:member))
       end
     end
 
@@ -257,7 +257,7 @@ RSpec.describe MembersController, type: :controller do
         post :create, member: {
           something: :ignored
         }
-        assigns[:member].should_not be_persisted
+        assigns(:member).should_not be_persisted
         response.should render_template 'new'
       end
     end
@@ -287,8 +287,8 @@ RSpec.describe MembersController, type: :controller do
         put :update, id: member, member: {
           display_name: 'new name'
         }
-        assigns[:member].display_name.should == 'new name'
-        response.should redirect_to member_path(assigns[:member])
+        assigns(:member).display_name.should == 'new name'
+        response.should redirect_to member_path(assigns(:member))
       end
     end
 
@@ -297,7 +297,7 @@ RSpec.describe MembersController, type: :controller do
         put :update, id: member, member: {
           initial_budget: -1000
         }
-        assigns[:member].reload.initial_budget.should_not == -1000
+        assigns(:member).reload.initial_budget.should_not == -1000
         response.should render_template 'edit'
       end
     end

@@ -5,14 +5,14 @@ RSpec.describe TopController, type: :controller do
     before { controller.authenticate create(:account) }
     it do
       get :index
-      expect(response).to redirect_to dashboard_path
+      response.should redirect_to dashboard_path
     end
   end
 
   context 'when anonymous' do
     it do
       get :index
-      expect(response).to be_success
+      response.should be_success
     end
   end
 end

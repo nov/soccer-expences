@@ -13,14 +13,25 @@ RSpec.describe Event, type: :model do
   end
 
   describe '#cost_per_member' do
-    it 'should be total_cost / total_attendees' do
+    let(:event) do
       event = create(
         :event,
         cost_from_members_budget: 1200,
         cost_from_team_budget: 500
       )
-      3.times { event.members << create(:member) }
-      event.cost_per_member.should == 1700.0 / 3
+    end
+
+    context 'when attendees exist' do
+      it 'should be total_cost / total_attendees' do
+        3.times { event.members << create(:member) }
+        event.cost_per_member.should == 1700.0 / 3
+      end
+    end
+
+    context 'otherwise' do
+      it do
+        event.cost_per_member.should == 0
+      end
     end
   end
 

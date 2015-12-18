@@ -1,18 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe Account::AdminsController, type: :controller do
+RSpec.describe AccountsController, type: :controller do
   let(:current_account) { create(:account) }
-  let(:account_context) { create(:account) }
 
   describe 'role-based access control' do
-    describe '#create' do
+    describe '#show' do
       context 'when authenticated' do
         before { controller.authenticate current_account }
 
         context 'when pending' do
           it do
-            post :create, account_id: account_context
-            account_context.reload.should_not be_admin
+            get :index
             response.should redirect_to dashboard_path
           end
         end
@@ -20,25 +18,23 @@ RSpec.describe Account::AdminsController, type: :controller do
         context 'when viewer' do
           before { current_account.approve! }
           it do
-            post :create, account_id: account_context
-            account_context.reload.should_not be_admin
-            response.should redirect_to dashboard_path
+            get :index
+            response.should be_success
           end
         end
 
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            post :create, account_id: account_context
-            account_context.reload.should be_admin
-            response.should redirect_to accounts_path
+            get :index
+            response.should be_success
           end
         end
       end
 
       context 'when anonymous' do
         it do
-          post :create, account_id: account_context
+          get :index
           response.should redirect_to root_path
         end
       end

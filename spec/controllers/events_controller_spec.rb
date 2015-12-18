@@ -132,8 +132,11 @@ RSpec.describe EventsController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            post :create, event: {title: ''}
-            response.should be_success
+            post :create, event: {
+              title: 'some event',
+              location: 'somewhere'
+            }
+            response.should redirect_to event_path(assigns(:event))
           end
         end
       end
@@ -168,8 +171,11 @@ RSpec.describe EventsController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            put :update, id: event, event: {title: ''}
-            response.should be_success
+            put :update, id: event, event: {
+              title: 'some event',
+              location: 'somewhere'
+            }
+            response.should redirect_to event_path(event)
           end
         end
       end
@@ -207,10 +213,10 @@ RSpec.describe EventsController, type: :controller do
           title: 'some event',
           location: 'somewhere'
         }
-        assigns[:event].should be_persisted
-        assigns[:event].title.should == 'some event'
-        assigns[:event].location.should == 'somewhere'
-        response.should redirect_to event_path(assigns[:event])
+        assigns(:event).should be_persisted
+        assigns(:event).title.should == 'some event'
+        assigns(:event).location.should == 'somewhere'
+        response.should redirect_to event_path(assigns(:event))
       end
     end
 
@@ -219,7 +225,7 @@ RSpec.describe EventsController, type: :controller do
         post :create, event: {
           something: :ignored
         }
-        assigns[:event].should_not be_persisted
+        assigns(:event).should_not be_persisted
         response.should render_template 'new'
       end
     end
@@ -249,8 +255,8 @@ RSpec.describe EventsController, type: :controller do
         put :update, id: event, event: {
           title: 'new title'
         }
-        assigns[:event].title.should == 'new title'
-        response.should redirect_to event_path(assigns[:event])
+        assigns(:event).title.should == 'new title'
+        response.should redirect_to event_path(assigns(:event))
       end
     end
 
@@ -259,7 +265,7 @@ RSpec.describe EventsController, type: :controller do
         put :update, id: event, event: {
           cost_from_members_budget: -1000
         }
-        assigns[:event].reload.cost_from_members_budget.should_not == -1000
+        assigns(:event).reload.cost_from_members_budget.should_not == -1000
         response.should render_template 'edit'
       end
     end
