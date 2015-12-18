@@ -1,3 +1,6 @@
 require 'simplecov'
-SimpleCov.start 'rails'
-# SimpleCov.minimum_coverage 90
+SimpleCov.start 'rails' do
+  add_filter '/lib/'
+  add_filter '/app/helpers/'
+end
+SimpleCov.minimum_coverage 90
