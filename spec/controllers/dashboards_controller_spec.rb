@@ -78,20 +78,4 @@ RSpec.describe DashboardsController, type: :controller do
       end
     end
   end
-
-  describe '#show' do
-    let(:all_events) do
-      50.times.collect { create(:event) }
-    end
-
-    before do
-      current_account.adminize!
-      controller.authenticate current_account
-    end
-
-    it 'should lists all events' do
-      get :show
-      assigns(:events).should match_array all_events
-    end
-  end
 end
