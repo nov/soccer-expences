@@ -26,7 +26,7 @@ class Event < ActiveRecord::Base
     if total_attendees == 0
       0
     else
-      total_cost.to_f / total_attendees
+      cost_from_members_budget.to_f / total_attendees
     end
   end
 
