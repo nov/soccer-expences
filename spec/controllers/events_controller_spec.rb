@@ -182,4 +182,86 @@ RSpec.describe EventsController, type: :controller do
       end
     end
   end
+
+  describe '#create' do
+    before do
+      current_account.adminize!
+      controller.authenticate current_account
+    end
+
+    context 'when missing required params' do
+      it do
+        expect do
+          post :create
+        end.to raise_error ActionController::ParameterMissing
+
+        expect do
+          post :create, event: {}
+        end.to raise_error ActionController::ParameterMissing
+      end
+    end
+
+    context 'when valid' do
+      it do
+        post :create, event: {
+          title: 'some event',
+          location: 'somewhere'
+        }
+        assigns[:event].should be_persisted
+        assigns[:event].title.should == 'some event'
+        assigns[:event].location.should == 'somewhere'
+        response.should redirect_to event_path(assigns[:event])
+      end
+    end
+
+    context 'when invalid' do
+      it 'should render validation errors' do
+        post :create, event: {
+          something: :ignored
+        }
+        assigns[:event].should_not be_persisted
+        response.should render_template 'new'
+      end
+    end
+  end
+
+  describe '#update' do
+    let(:event) { create(:event) }
+    before do
+      current_account.adminize!
+      controller.authenticate current_account
+    end
+
+    context 'when missing required params' do
+      it do
+        expect do
+          put :update, id: event
+        end.to raise_error ActionController::ParameterMissing
+
+        expect do
+          put :update, id: event, event: {}
+        end.to raise_error ActionController::ParameterMissing
+      end
+    end
+
+    context 'when valid' do
+      it do
+        put :update, id: event, event: {
+          title: 'new title'
+        }
+        assigns[:event].title.should == 'new title'
+        response.should redirect_to event_path(assigns[:event])
+      end
+    end
+
+    context 'when invalid' do
+      it 'should render validation errors' do
+        put :update, id: event, event: {
+          cost_from_members_budget: -1000
+        }
+        assigns[:event].reload.cost_from_members_budget.should_not == -1000
+        response.should render_template 'edit'
+      end
+    end
+  end
 end

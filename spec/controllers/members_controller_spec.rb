@@ -222,4 +222,84 @@ RSpec.describe MembersController, type: :controller do
       end
     end
   end
+
+  describe '#create' do
+    before do
+      current_account.adminize!
+      controller.authenticate current_account
+    end
+
+    context 'when missing required params' do
+      it do
+        expect do
+          post :create
+        end.to raise_error ActionController::ParameterMissing
+
+        expect do
+          post :create, member: {}
+        end.to raise_error ActionController::ParameterMissing
+      end
+    end
+
+    context 'when valid' do
+      it do
+        post :create, member: {
+          display_name: 'someone'
+        }
+        assigns[:member].should be_persisted
+        assigns[:member].display_name.should == 'someone'
+        response.should redirect_to member_path(assigns[:member])
+      end
+    end
+
+    context 'when invalid' do
+      it 'should render validation errors' do
+        post :create, member: {
+          something: :ignored
+        }
+        assigns[:member].should_not be_persisted
+        response.should render_template 'new'
+      end
+    end
+  end
+
+  describe '#update' do
+    let(:member) { create(:member) }
+    before do
+      current_account.adminize!
+      controller.authenticate current_account
+    end
+
+    context 'when missing required params' do
+      it do
+        expect do
+          put :update, id: member
+        end.to raise_error ActionController::ParameterMissing
+
+        expect do
+          put :update, id: member, member: {}
+        end.to raise_error ActionController::ParameterMissing
+      end
+    end
+
+    context 'when valid' do
+      it do
+        put :update, id: member, member: {
+          display_name: 'new name'
+        }
+        assigns[:member].display_name.should == 'new name'
+        response.should redirect_to member_path(assigns[:member])
+      end
+    end
+
+    context 'when invalid' do
+      it 'should render validation errors' do
+        put :update, id: member, member: {
+          initial_budget: -1000
+        }
+        assigns[:member].reload.initial_budget.should_not == -1000
+        response.should render_template 'edit'
+      end
+    end
+  end
 end
