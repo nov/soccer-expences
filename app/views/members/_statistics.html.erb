@@ -1,0 +1,40 @@
+<section class="bs-docs-section statistics">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="bs-component">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= 'member.statistics.number_of_members.title'.t %></h3>
+          </div>
+          <div class="panel-body value">
+            <%= 'member.statistics.number_of_members.value'.t(count: Member.count) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="bs-component">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= 'member.statistics.total_bugdet.title'.t(attribute: Member.human_attribute_name(:initial_budget)) %></h3>
+          </div>
+          <div class="panel-body value">
+            <%= as_currency Member.total_initial_budget %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="bs-component">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= 'member.statistics.total_bugdet.title'.t(attribute: Member.human_attribute_name(:remaining_budget)) %></h3>
+          </div>
+          <div class="panel-body value">
+            <%= as_currency Member.total_remaining_budget %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
