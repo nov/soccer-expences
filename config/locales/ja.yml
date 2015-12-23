@@ -112,6 +112,12 @@ ja:
     new: 選手登録
     edit: 選手編集
     event_history: 参加遠征一覧
+    statistics:
+      number_of_members:
+        title: 総人数
+        value: "%{count}人"
+      total_bugdet:
+        title: "総%{attribute}"
     placeholder:
       display_name: 元石川 翼
       description: モトイシカワ ツバサ (省略可)
