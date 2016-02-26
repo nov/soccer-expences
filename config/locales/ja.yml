@@ -118,7 +118,8 @@ ja:
         value: "%{count}人"
       total_bugdet:
         title: "総%{attribute}"
-        remarks: "返金総額 %{refundable} (差額 %{diff})"
+        refundable: "返金総額"
+        diff: "差額"
     placeholder:
       display_name: 元石川 翼
       description: モトイシカワ ツバサ (省略可)
