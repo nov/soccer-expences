@@ -34,6 +34,12 @@
             <%= as_currency Member.total_remaining_budget %>
           </div>
         </div>
+        <div class="remarks">
+          <%= 'member.statistics.total_bugdet.remarks'.t(
+            refundable: as_currency(Member.total_refundable_budget),
+            diff: as_currency(Member.total_remaining_budget - Member.total_refundable_budget)
+          ) %>
+        </div>
       </div>
     </div>
   </div>

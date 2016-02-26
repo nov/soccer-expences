@@ -33,4 +33,10 @@ class Event < ActiveRecord::Base
   def calculate_spent_budget
     members.includes(:events).collect(&:calculate_spent_budget)
   end
+
+  class << self
+    def total_cost_from_members_budget
+      all.to_a.sum(&:cost_from_members_budget)
+    end
+  end
 end

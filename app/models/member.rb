@@ -31,6 +31,10 @@ class Member < ActiveRecord::Base
     end
 
     def total_remaining_budget
+      total_initial_budget - Event.total_cost_from_members_budget
+    end
+
+    def total_refundable_budget
       all.to_a.sum(&:remaining_budget)
     end
   end
