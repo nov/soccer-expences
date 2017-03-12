@@ -96,6 +96,7 @@ ja:
       description: >
         このサイトに登録された遠征情報に、後日経費情報を追加することで、各自の残予算が自動的に計算されます。
     login_with_facebook: Facebook IDでログイン
+    login_with_google: Google IDでログイン
   dashboard:
     update: 費用計算
   event:

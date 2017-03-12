@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby '2.4.0'
 
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.8'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -17,6 +17,7 @@ gem 'bootstrap-material-design'
 gem 'material_icons'
 
 gem 'fb_graph2'
+gem 'openid_connect'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
@@ -27,8 +28,6 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
   gem 'webmock'
   gem 'simplecov', require: false
 end
@@ -38,6 +37,8 @@ group :development, :test do
   gem 'spring'
   gem 'pry-byebug'
   gem 'quiet_assets'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :production, :staging do

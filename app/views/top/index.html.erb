@@ -20,6 +20,21 @@
             </script>
           <% end %>
         </p>
+        <p>
+          <%= link_to '#', id: 'google_login_button', class: 'btn btn-raised btn-primary' do %>
+            <%= 'top.login_with_google'.t %>
+          <% end %>
+          <%= content_for :bottom do %>
+            <script>
+              $(function () {
+                $('#google_login_button').click(function () {
+                  login_with_google();
+                  return false;
+                });
+              });
+            </script>
+          <% end %>
+        </p>
       </div>
     </div>
     <div class="col-md-4">

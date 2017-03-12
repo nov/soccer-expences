@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214055855) do
+ActiveRecord::Schema.define(version: 20170312120740) do
 
   create_table "accounts", force: :cascade do |t|
     t.boolean  "admin",             default: false
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20151214055855) do
   end
 
   add_index "connect_facebooks", ["identifier"], name: "index_connect_facebooks_on_identifier", unique: true
+
+  create_table "connect_googles", force: :cascade do |t|
+    t.integer  "account_id"
+    t.string   "identifier",   null: false
+    t.string   "access_token", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "connect_googles", ["identifier"], name: "index_connect_googles_on_identifier", unique: true
 
   create_table "event_members", force: :cascade do |t|
     t.integer  "event_id",   null: false

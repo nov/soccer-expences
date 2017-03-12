@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   namespace :connect do
     resource :facebook, only: :create
+    resource :google, only: :create
   end
   resource :dashboard, only: [:show, :update]
   resource :session, only: :destroy

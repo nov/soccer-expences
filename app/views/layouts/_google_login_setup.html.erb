@@ -1,0 +1,27 @@
+<script>
+  var auth2;
+
+  var setup_google_signin = function () {
+    gapi.load('auth2', function() {
+      auth2 = gapi.auth2.init({
+        client_id: '<%= Connect::Google.config[:client_id] %>',
+        scope: 'profile email'
+      });
+    });
+  }
+
+  var login_with_google = function () {
+    auth2.grantOfflineAccess().then(function (res) {
+      console.info(res);
+      $('#google_authorization_code').val(res.code);
+      $('#google_login_form').submit();
+    });
+  }
+</script>
+<script src="https://apis.google.com/js/client:platform.js?onload=setup_google_signin" async defer></script>
+
+<%= content_for :bottom do %>
+  <%= form_tag connect_google_path, id: 'google_login_form' do %>
+    <%= hidden_field_tag :code, nil, id: 'google_authorization_code' %>
+  <% end %>
+<% end %>

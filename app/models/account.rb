@@ -1,5 +1,6 @@
 class Account < ActiveRecord::Base
   has_one :facebook, class_name: 'Connect::Facebook'
+  has_one :google,   class_name: 'Connect::Google'
   validates :display_name, :email, presence: true
 
   def adminize!

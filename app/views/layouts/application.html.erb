@@ -7,6 +7,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/fb_login_setup' %>
+  <%= render 'layouts/google_login_setup' %>
 </head>
 <%= content_tag :body, class: controller_name do %>
   <%= render 'layouts/navigation' %>
@@ -17,37 +19,6 @@
   </div>
   <%= render 'layouts/footer' %>
   <%= yield :bottom %>
-  <%= form_tag connect_facebook_path, id: 'fb_login_form' %>
-  <script>
-    $(function () {
-      $.material.init();
-    });
-
-    var login_with_fb_cookie = function () {
-      FB.login(function (response) {
-        if (response.authResponse) {
-          $('#fb_login_form').submit();
-        }
-      }, {scope: 'email'});
-    };
-
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId   : '<%= Connect::Facebook.config[:client_id] %>',
-        cookie  : true,
-        xfbml   : true,
-        version : '<%= FbGraph2.api_version %>'
-      });
-    };
-
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = '//connect.facebook.net/en_US/sdk.js';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
   <%= render 'layouts/google_analytics' %>
 <% end %>
 </html>
