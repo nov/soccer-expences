@@ -9,7 +9,7 @@ class Connect::FacebooksController < ApplicationController
     redirect_to root_url, flash: {
       warning: 'FB Permission Missing'
     }
-  rescue FbGraph2::Auth::SignedRequest::VerificationFailed
+  rescue => e
     redirect_to root_url, flash: {
       warning: 'FB Login Failed'
     }

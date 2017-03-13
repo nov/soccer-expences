@@ -20,16 +20,21 @@ class Connect::Google < ActiveRecord::Base
 
     def authenticate(code)
       client.authorization_code = code
-      access_token = client.access_token!
-      userinfo = access_token.userinfo!
-      connect = find_or_initialize_by(identifier: userinfo.sub)
-      connect.access_token = access_token.access_token
+      token_response = client.access_token!
+      id_token = JSON::JWT.decode token_response.id_token, :skip_verification
+      connect = find_or_initialize_by(identifier: id_token[:sub])
+      connect.access_token = token_response.access_token
       connect.save!
-      connect.account || Account.create!(
-        google: connect,
-        email: userinfo.email,
-        display_name: userinfo.name
-      )
+      if connect.account.present?
+        connect.account
+      else
+        userinfo = token_response.userinfo!
+        Account.create!(
+          google: connect,
+          email: userinfo.email,
+          display_name: userinfo.name
+        )
+      end
     end
   end
 end
