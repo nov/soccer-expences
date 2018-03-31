@@ -1,1 +1,1 @@
-FbGraph2.api_version = 'v2.5'
+FbGraph2.api_version = 'v2.12'

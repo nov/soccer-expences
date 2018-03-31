@@ -74,8 +74,8 @@ ja:
         other: "%{count}年以上"
   site:
     title: Soccer Expenses '18
-    sub_title: 元石川SC 6年生チーム 経費管理サイト
-    copyright: 2017 元石川SC
+    sub_title: 元石川SC 5年生チーム 経費管理サイト
+    copyright: 2018 元石川SC
   navi:
     login: ログイン
     logout: ログアウト
