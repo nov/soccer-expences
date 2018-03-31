@@ -45,5 +45,4 @@ group :production, :staging do
   gem 'pg', '~> 0.20'
   gem 'unicorn'
   gem 'rails_12factor'
-  gem 'newrelic_rpm'
 end
