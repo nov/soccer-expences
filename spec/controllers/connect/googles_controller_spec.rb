@@ -18,7 +18,7 @@ RSpec.describe Connect::GooglesController, type: :controller do
         context 'with email & profile scope' do
           it 'should register user' do
             mock_google :get, op_config.userinfo_endpoint, 'userinfo', access_token: 'access_token' do
-              post :create, code: code
+              post :create, params: {code: code}
               response.should redirect_to dashboard_path
             end
           end
@@ -27,7 +27,7 @@ RSpec.describe Connect::GooglesController, type: :controller do
         context 'without email scope' do
           it 'should register user' do
             mock_google :get, op_config.userinfo_endpoint, 'userinfo_without_email', access_token: 'access_token' do
-              post :create, code: code
+              post :create, params: {code: code}
               flash[:warning].should == 'Google Login Failed'
               response.should redirect_to root_path
             end
@@ -37,7 +37,7 @@ RSpec.describe Connect::GooglesController, type: :controller do
         context 'without profile scope' do
           it 'should register user' do
             mock_google :get, op_config.userinfo_endpoint, 'userinfo_without_profile', access_token: 'access_token' do
-              post :create, code: code
+              post :create, params: {code: code}
               flash[:warning].should == 'Google Login Failed'
               response.should redirect_to root_path
             end
@@ -55,7 +55,7 @@ RSpec.describe Connect::GooglesController, type: :controller do
         end
 
         it 'should authenticate user without accessing userinfo endpoint' do
-          post :create, code: code
+          post :create, params: {code: code}
           response.should redirect_to dashboard_path
         end
       end

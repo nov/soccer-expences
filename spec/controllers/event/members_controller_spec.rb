@@ -12,7 +12,7 @@ RSpec.describe Event::MembersController, type: :controller do
 
         context 'when pending' do
           it do
-            get :index, event_id: event_context
+            get :index, params: {event_id: event_context}
             response.should redirect_to dashboard_path
           end
         end
@@ -20,7 +20,7 @@ RSpec.describe Event::MembersController, type: :controller do
         context 'when viewer' do
           before { current_account.approve! }
           it do
-            get :index, event_id: event_context
+            get :index, params: {event_id: event_context}
             response.should be_success
             response.content_type.should == 'application/json'
           end
@@ -29,7 +29,7 @@ RSpec.describe Event::MembersController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            get :index, event_id: event_context
+            get :index, params: {event_id: event_context}
             response.should be_success
             response.content_type.should == 'application/json'
           end
@@ -38,7 +38,7 @@ RSpec.describe Event::MembersController, type: :controller do
 
       context 'when anonymous' do
         it do
-          get :index, event_id: event_context
+          get :index, params: {event_id: event_context}
           response.should redirect_to root_path
         end
       end
@@ -50,7 +50,7 @@ RSpec.describe Event::MembersController, type: :controller do
 
         context 'when pending' do
           it do
-            put :update, event_id: event_context, id: member_context
+            put :update, params: {event_id: event_context, id: member_context}
             response.should redirect_to dashboard_path
           end
         end
@@ -58,7 +58,7 @@ RSpec.describe Event::MembersController, type: :controller do
         context 'when viewer' do
           before { current_account.approve! }
           it do
-            put :update, event_id: event_context, id: member_context
+            put :update, params: {event_id: event_context, id: member_context}
             response.should redirect_to dashboard_path
           end
         end
@@ -66,7 +66,7 @@ RSpec.describe Event::MembersController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            put :update, event_id: event_context, id: member_context
+            put :update, params: {event_id: event_context, id: member_context}
             response.should be_success
             response.content_type.should == 'application/json'
           end
@@ -75,7 +75,7 @@ RSpec.describe Event::MembersController, type: :controller do
 
       context 'when anonymous' do
         it do
-          put :update, event_id: event_context, id: member_context
+          put :update, params: {event_id: event_context, id: member_context}
           response.should redirect_to root_path
         end
       end
@@ -94,14 +94,14 @@ RSpec.describe Event::MembersController, type: :controller do
       end
 
       it 'should remove attendee' do
-        put :update, event_id: event_context, id: member_context
+        put :update, params: {event_id: event_context, id: member_context}
         event_context.reload.members.should_not include member_context
       end
     end
 
     context 'otherwise' do
       it 'should add attendee' do
-        put :update, event_id: event_context, id: member_context
+        put :update, params: {event_id: event_context, id: member_context}
         event_context.reload.members.should include member_context
       end
     end

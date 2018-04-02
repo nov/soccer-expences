@@ -1,6 +1,6 @@
 class Account::ViewersController < ApplicationController
-  before_filter :require_admin_access
-  before_filter :require_account_context
+  before_action :require_admin_access
+  before_action :require_account_context
 
   def create
     @account.approve!

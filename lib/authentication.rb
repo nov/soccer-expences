@@ -8,7 +8,7 @@ module Authentication
 
   included do
     include Authentication::Helper
-    before_filter :optional_authentication
+    before_action :optional_authentication
     rescue_from AuthenticationRequired,  with: :authentication_required!
     rescue_from ApprovedAccessRequired,  with: :approved_access_required!
     rescue_from AdminAccessRequired,     with: :admin_access_required!

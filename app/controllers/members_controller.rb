@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
-  before_filter :require_admin_access, except: [:index, :show]
-  before_filter :set_member, except: [:index, :new, :create]
+  before_action :require_admin_access, except: [:index, :show]
+  before_action :set_member, except: [:index, :new, :create]
 
   def index
     @members = Member.order(:id)

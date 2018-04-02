@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :account do
     sequence(:display_name) { |i| "Account##{i}" }
     sequence(:email) { |i| "account#{i}@example.com" }

@@ -51,7 +51,7 @@ RSpec.describe MembersController, type: :controller do
 
         context 'when pending' do
           it do
-            get :show, id: member
+            get :show, params: {id: member}
             response.should redirect_to dashboard_path
           end
         end
@@ -60,7 +60,7 @@ RSpec.describe MembersController, type: :controller do
           render_views
           before { current_account.approve! }
           it do
-            get :show, id: member
+            get :show, params: {id: member}
             response.should be_success
             response.should_not render_template(partial: 'members/_edit_button')
           end
@@ -70,7 +70,7 @@ RSpec.describe MembersController, type: :controller do
           render_views
           before { current_account.adminize! }
           it do
-            get :show, id: member
+            get :show, params: {id: member}
             response.should be_success
             response.should render_template(partial: 'members/_edit_button')
           end
@@ -79,7 +79,7 @@ RSpec.describe MembersController, type: :controller do
 
       context 'when anonymous' do
         it do
-          get :show, id: member
+          get :show, params: {id: member}
           response.should redirect_to root_path
         end
       end
@@ -127,7 +127,7 @@ RSpec.describe MembersController, type: :controller do
 
         context 'when pending' do
           it do
-            get :edit, id: member
+            get :edit, params: {id: member}
             response.should redirect_to dashboard_path
           end
         end
@@ -135,7 +135,7 @@ RSpec.describe MembersController, type: :controller do
         context 'when viewer' do
           before { current_account.approve! }
           it do
-            get :edit, id: member
+            get :edit, params: {id: member}
             response.should redirect_to dashboard_path
           end
         end
@@ -143,7 +143,7 @@ RSpec.describe MembersController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            get :show, id: member
+            get :show, params: {id: member}
             response.should be_success
           end
         end
@@ -172,7 +172,9 @@ RSpec.describe MembersController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            post :create, member: {display_name: 'some member'}
+            post :create, params: {
+              member: {display_name: 'some member'}
+            }
             response.should redirect_to member_path(assigns(:member))
           end
         end
@@ -192,7 +194,7 @@ RSpec.describe MembersController, type: :controller do
 
         context 'when pending' do
           it do
-            put :update, id: member
+            put :update, params: {id: member}
             response.should redirect_to dashboard_path
           end
         end
@@ -200,7 +202,7 @@ RSpec.describe MembersController, type: :controller do
         context 'when viewer' do
           before { current_account.approve! }
           it do
-            put :update, id: member
+            put :update, params: {id: member}
             response.should redirect_to dashboard_path
           end
         end
@@ -208,7 +210,10 @@ RSpec.describe MembersController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            put :update, id: member, member: {display_name: ''}
+            put :update, params: {
+              id: member,
+              member: {display_name: ''}
+            }
             response.should be_success
           end
         end
@@ -216,7 +221,7 @@ RSpec.describe MembersController, type: :controller do
 
       context 'when anonymous' do
         it do
-          put :update, id: member
+          put :update, params: {id: member}
           response.should redirect_to root_path
         end
       end
@@ -236,15 +241,19 @@ RSpec.describe MembersController, type: :controller do
         end.to raise_error ActionController::ParameterMissing
 
         expect do
-          post :create, member: {}
+          post :create, params: {
+            member: {}
+          }
         end.to raise_error ActionController::ParameterMissing
       end
     end
 
     context 'when valid' do
       it do
-        post :create, member: {
-          display_name: 'someone'
+        post :create, params: {
+          member: {
+            display_name: 'someone'
+          }
         }
         assigns(:member).should be_persisted
         assigns(:member).display_name.should == 'someone'
@@ -254,8 +263,10 @@ RSpec.describe MembersController, type: :controller do
 
     context 'when invalid' do
       it 'should render validation errors' do
-        post :create, member: {
-          something: :ignored
+        post :create, params: {
+          member: {
+            something: :ignored
+          }
         }
         assigns(:member).should_not be_persisted
         response.should render_template 'new'
@@ -273,19 +284,22 @@ RSpec.describe MembersController, type: :controller do
     context 'when missing required params' do
       it do
         expect do
-          put :update, id: member
+          put :update, params: {id: member}
         end.to raise_error ActionController::ParameterMissing
 
         expect do
-          put :update, id: member, member: {}
+          put :update, params: {id: member, member: {}}
         end.to raise_error ActionController::ParameterMissing
       end
     end
 
     context 'when valid' do
       it do
-        put :update, id: member, member: {
-          display_name: 'new name'
+        put :update, params: {
+          id: member,
+          member: {
+            display_name: 'new name'
+          }
         }
         assigns(:member).display_name.should == 'new name'
         response.should redirect_to member_path(assigns(:member))
@@ -294,8 +308,11 @@ RSpec.describe MembersController, type: :controller do
 
     context 'when invalid' do
       it 'should render validation errors' do
-        put :update, id: member, member: {
-          initial_budget: -1000
+        put :update, params: {
+          id: member,
+          member: {
+            initial_budget: -1000
+          }
         }
         assigns(:member).reload.initial_budget.should_not == -1000
         response.should render_template 'edit'

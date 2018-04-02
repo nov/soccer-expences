@@ -1,4 +1,4 @@
-class CreateEventMembers < ActiveRecord::Migration
+class CreateEventMembers < ActiveRecord::Migration[4.2]
   def change
     create_table :event_members do |t|
       t.belongs_to :event, :member, null: false

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :event do
     sequence(:title) { |i| "Event##{i}" }
     sequence(:location) { |i| "Location##{i}" }

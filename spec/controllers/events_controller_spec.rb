@@ -11,7 +11,7 @@ RSpec.describe EventsController, type: :controller do
 
         context 'when pending' do
           it do
-            get :show, id: event
+            get :show, params: {id: event}
             response.should redirect_to dashboard_path
           end
         end
@@ -20,7 +20,7 @@ RSpec.describe EventsController, type: :controller do
           render_views
           before { current_account.approve! }
           it do
-            get :show, id: event
+            get :show, params: {id: event}
             response.should be_success
             response.should_not render_template(partial: 'events/_edit_button')
           end
@@ -30,7 +30,7 @@ RSpec.describe EventsController, type: :controller do
           render_views
           before { current_account.adminize! }
           it do
-            get :show, id: event
+            get :show, params: {id: event}
             response.should be_success
             response.should render_template(partial: 'events/_edit_button')
           end
@@ -39,7 +39,7 @@ RSpec.describe EventsController, type: :controller do
 
       context 'when anonymous' do
         it do
-          get :show, id: event
+          get :show, params: {id: event}
           response.should redirect_to root_path
         end
       end
@@ -87,7 +87,7 @@ RSpec.describe EventsController, type: :controller do
 
         context 'when pending' do
           it do
-            get :edit, id: event
+            get :edit, params: {id: event}
             response.should redirect_to dashboard_path
           end
         end
@@ -95,7 +95,7 @@ RSpec.describe EventsController, type: :controller do
         context 'when viewer' do
           before { current_account.approve! }
           it do
-            get :edit, id: event
+            get :edit, params: {id: event}
             response.should redirect_to dashboard_path
           end
         end
@@ -103,7 +103,7 @@ RSpec.describe EventsController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            get :show, id: event
+            get :edit, params: {id: event}
             response.should be_success
           end
         end
@@ -132,9 +132,11 @@ RSpec.describe EventsController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            post :create, event: {
-              title: 'some event',
-              location: 'somewhere'
+            post :create, params: {
+              event: {
+                title: 'some event',
+                location: 'somewhere'
+              }
             }
             response.should redirect_to event_path(assigns(:event))
           end
@@ -155,7 +157,7 @@ RSpec.describe EventsController, type: :controller do
 
         context 'when pending' do
           it do
-            put :update, id: event
+            put :update, params: {id: event}
             response.should redirect_to dashboard_path
           end
         end
@@ -163,7 +165,7 @@ RSpec.describe EventsController, type: :controller do
         context 'when viewer' do
           before { current_account.approve! }
           it do
-            put :update, id: event
+            put :update, params: {id: event}
             response.should redirect_to dashboard_path
           end
         end
@@ -171,9 +173,12 @@ RSpec.describe EventsController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            put :update, id: event, event: {
-              title: 'some event',
-              location: 'somewhere'
+            put :update, params: {
+              id: event,
+              event: {
+                title: 'some event',
+                location: 'somewhere'
+              }
             }
             response.should redirect_to event_path(event)
           end
@@ -182,7 +187,7 @@ RSpec.describe EventsController, type: :controller do
 
       context 'when anonymous' do
         it do
-          put :update, id: event
+          put :update, params: {id: event}
           response.should redirect_to root_path
         end
       end
@@ -202,16 +207,18 @@ RSpec.describe EventsController, type: :controller do
         end.to raise_error ActionController::ParameterMissing
 
         expect do
-          post :create, event: {}
+          post :create, params: {event: {}}
         end.to raise_error ActionController::ParameterMissing
       end
     end
 
     context 'when valid' do
       it do
-        post :create, event: {
-          title: 'some event',
-          location: 'somewhere'
+        post :create, params: {
+          event: {
+            title: 'some event',
+            location: 'somewhere'
+          }
         }
         assigns(:event).should be_persisted
         assigns(:event).title.should == 'some event'
@@ -222,8 +229,10 @@ RSpec.describe EventsController, type: :controller do
 
     context 'when invalid' do
       it 'should render validation errors' do
-        post :create, event: {
-          something: :ignored
+        post :create, params: {
+          event: {
+            something: :ignored
+          }
         }
         assigns(:event).should_not be_persisted
         response.should render_template 'new'
@@ -241,19 +250,22 @@ RSpec.describe EventsController, type: :controller do
     context 'when missing required params' do
       it do
         expect do
-          put :update, id: event
+          put :update, params: {id: event}
         end.to raise_error ActionController::ParameterMissing
 
         expect do
-          put :update, id: event, event: {}
+          put :update, params: {id: event, event: {}}
         end.to raise_error ActionController::ParameterMissing
       end
     end
 
     context 'when valid' do
       it do
-        put :update, id: event, event: {
-          title: 'new title'
+        put :update, params: {
+          id: event,
+          event: {
+            title: 'new title'
+          }
         }
         assigns(:event).title.should == 'new title'
         response.should redirect_to event_path(assigns(:event))
@@ -262,8 +274,11 @@ RSpec.describe EventsController, type: :controller do
 
     context 'when invalid' do
       it 'should render validation errors' do
-        put :update, id: event, event: {
-          cost_from_members_budget: -1000
+        put :update, params: {
+          id: event,
+          event: {
+            cost_from_members_budget: -1000
+          }
         }
         assigns(:event).reload.cost_from_members_budget.should_not == -1000
         response.should render_template 'edit'

@@ -11,7 +11,7 @@ RSpec.describe Event::ExpensesController, type: :controller do
 
         context 'when pending' do
           it do
-            put :update, event_id: event_context
+            put :update, params: {event_id: event_context}
             response.should redirect_to dashboard_path
           end
         end
@@ -19,7 +19,7 @@ RSpec.describe Event::ExpensesController, type: :controller do
         context 'when viewer' do
           before { current_account.approve! }
           it do
-            put :update, event_id: event_context
+            put :update, params: {event_id: event_context}
             response.should redirect_to dashboard_path
           end
         end
@@ -27,7 +27,7 @@ RSpec.describe Event::ExpensesController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            put :update, event_id: event_context
+            put :update, params: {event_id: event_context}
             response.should redirect_to event_path(event_context)
           end
         end
@@ -35,7 +35,7 @@ RSpec.describe Event::ExpensesController, type: :controller do
 
       context 'when anonymous' do
         it do
-          put :update, event_id: event_context
+          put :update, params: {event_id: event_context}
           response.should redirect_to root_path
         end
       end

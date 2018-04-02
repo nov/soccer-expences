@@ -1,7 +1,7 @@
 class Event::MembersController < ApplicationController
-  before_filter :require_admin_access, except: :index
-  before_filter :require_event_context
-  before_filter :set_member, except: :index
+  before_action :require_admin_access, except: :index
+  before_action :require_event_context
+  before_action :set_member, except: :index
 
   def index
     render json: @event.members.as_json

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_filter :require_admin_access, except: [:show]
-  before_filter :set_event, except: [:new, :create]
+  before_action :require_admin_access, except: [:show]
+  before_action :set_event, except: [:new, :create]
 
   def show
     @members = Member.order(:id)

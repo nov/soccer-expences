@@ -1,4 +1,4 @@
-class CreateConnectGoogles < ActiveRecord::Migration
+class CreateConnectGoogles < ActiveRecord::Migration[4.2]
   def change
     create_table :connect_googles do |t|
       t.belongs_to :account

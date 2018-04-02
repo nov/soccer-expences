@@ -1,6 +1,6 @@
 class Event::ExpensesController < ApplicationController
-  before_filter :require_admin_access, except: :index
-  before_filter :require_event_context
+  before_action :require_admin_access, except: :index
+  before_action :require_event_context
 
   def update
     Member.calculate_spent_budget

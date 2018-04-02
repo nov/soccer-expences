@@ -11,7 +11,7 @@ RSpec.describe Account::AdminsController, type: :controller do
 
         context 'when pending' do
           it do
-            post :create, account_id: account_context
+            post :create, params: {account_id: account_context}
             account_context.reload.should_not be_admin
             response.should redirect_to dashboard_path
           end
@@ -20,7 +20,7 @@ RSpec.describe Account::AdminsController, type: :controller do
         context 'when viewer' do
           before { current_account.approve! }
           it do
-            post :create, account_id: account_context
+            post :create, params: {account_id: account_context}
             account_context.reload.should_not be_admin
             response.should redirect_to dashboard_path
           end
@@ -29,7 +29,7 @@ RSpec.describe Account::AdminsController, type: :controller do
         context 'when admin' do
           before { current_account.adminize! }
           it do
-            post :create, account_id: account_context
+            post :create, params: {account_id: account_context}
             account_context.reload.should be_admin
             response.should redirect_to accounts_path
           end
@@ -38,7 +38,7 @@ RSpec.describe Account::AdminsController, type: :controller do
 
       context 'when anonymous' do
         it do
-          post :create, account_id: account_context
+          post :create, params: {account_id: account_context}
           response.should redirect_to root_path
         end
       end

@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController
-  skip_before_filter :require_approved_access, only: :show
-  before_filter :require_authentication
+  skip_before_action :require_approved_access, only: :show
+  before_action :require_authentication
 
   def show
     @events = Event.order(date: :desc)
